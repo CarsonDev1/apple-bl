@@ -12,6 +12,7 @@ export interface Product {
 	image: {
 		url: string;
 	};
+	attributes: any;
 	price_range: {
 		minimum_price: {
 			final_price: {
@@ -40,22 +41,124 @@ const query = `
     items {
       ...ProductInterfaceField
     }
-  }
+    aggregations {
+      attribute_code
+      count
+      label
+      options {
+        count
+        label
+        value
+        swatch_data {
+          type
+          value
+        }
+      }
+      position
+    }
+    sort_fields {
+      default
+      options {
+        label
+        value
+      }
+    }
+    total_count
+    page_info {
+      current_page
+      page_size
+      total_pages
+    }  }
 }
 fragment ProductInterfaceField on ProductInterface {
-  id
+ image_banner
+  __typename
+  sku
+  uid
   name
   url_key
+  url_suffix
+  canonical_url
+  stock_status
+  categories {
+    __typename
+    name
+    url_key
+    url_path
+    level
+    uid
+    position
+    icon_image
+    image
+    path
+  }
+  id
+  meta_description
+  meta_keyword
+  meta_title
+  new_from_date
+  new_to_date
+  rating_summary
+  review_count
+  thumbnail {
+    url
+    position
+  }
   image {
     url
   }
   price_range {
-    minimum_price {
-      final_price {
-        value
-        currency
-      }
-    }
+    ...PriceRangeField
+  }
+  ...CustomField
+}
+fragment CustomField on ProductInterface {
+  color
+  country_of_manufacture
+  daily_sale {
+    end_date
+    entity_id
+    sale_price
+    sale_qty
+    saleable_qty
+    sold_qty
+    start_date
+    __typename
+  }
+  rating_summary_start {
+    star_1
+    star_2
+    star_3
+    star_4
+    star_5
+  }
+  attributes {
+    attribute_code
+    label
+    value
+  }
+}
+fragment PriceRangeField on PriceRange {
+  __typename
+  maximum_price {
+    ...ProductPriceField
+  }
+  minimum_price {
+    ...ProductPriceField
+  }
+}
+fragment ProductPriceField on ProductPrice {
+  discount {
+    amount_off
+    percent_off
+  }
+  final_price {
+    currency
+    value
+  }
+  regular_price {
+    currency
+    value
   }
 }
 `;
@@ -63,7 +166,7 @@ fragment ProductInterfaceField on ProductInterface {
 const variables = {
 	filter: {
 		category_uid: {
-			eq: 'Mjgx', // Category for iPhones
+			eq: 'MTk4',
 		},
 	},
 	pageSize: 200,
@@ -245,6 +348,16 @@ const ProductList: React.FC = () => {
 								style={{ textDecoration: 'none', color: 'black' }}
 							>
 								<div className='upgrade-item'>
+									<div className='upgrade-item-header'>
+										<span className='percent'>Trả góp 0%</span>
+										<Image
+											src='/apple/author.webp'
+											width={60}
+											height={20}
+											quality={100}
+											alt='author'
+										/>
+									</div>
 									<div className='upgrade-item-img'>
 										<Image
 											src={product.image.url}
@@ -263,6 +376,25 @@ const ProductList: React.FC = () => {
 													'vi-VN'
 												)}{' '}
 												{product.price_range.minimum_price.final_price.currency}
+											</div>
+										</div>
+										<div className='upgrade-item-content-body-reduced'>
+											<div className='price-reduced'>
+												{product.attributes && product.attributes[0]?.value
+													? Number(product.attributes[0].value).toLocaleString('vi-VN')
+													: 'N/A'}{' '}
+												{product.price_range.minimum_price.final_price.currency}
+											</div>
+
+											<div className='percent'>
+												-
+												{Math.ceil(
+													((product.attributes[0].value -
+														product.price_range.minimum_price.final_price.value) /
+														product.attributes[0].value) *
+														100
+												)}
+												%
 											</div>
 										</div>
 									</div>

@@ -7,6 +7,8 @@
 		.tabs {
 			padding: 1.2rem 0;
 			font-size: 1.2rem;
+			display: flex;
+			width: 100%;
 		}
 		.upgrade {
 			display: grid;
@@ -21,7 +23,15 @@
 			@media screen and (max-width: '768px') {
 				grid-template-columns: repeat(2, 1fr);
 			}
-
+			@media screen and (max-width: '1200px') {
+				grid-template-columns: repeat(4, 1fr);
+			}
+			@media screen and (max-width: '850px') {
+				grid-template-columns: repeat(3, 1fr);
+			}
+			@media screen and (max-width: '768px') {
+				grid-template-columns: repeat(2, 1fr);
+			}
 			&-item {
 				background: #fff;
 				border-radius: 0.8rem;

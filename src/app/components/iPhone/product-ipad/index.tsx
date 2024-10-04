@@ -99,7 +99,7 @@ const ProductIpad: React.FC = () => {
 	const [visibleCount, setVisibleCount] = useState<number>(10); // Initial number of products to show
 	const [filteredData, setFilteredData] = useState<Product[]>([]);
 
-	const tabs = ['Pro', 'Air', 'Gen', 'Mini'];
+	const tabs = ['Pro', 'Air', 'Gen'];
 
 	useEffect(() => {
 		const filtered = data?.filter((product) => product.name.includes(activeTab));
@@ -133,7 +133,6 @@ const ProductIpad: React.FC = () => {
 		return <div>Error loading data</div>;
 	}
 
-	// Get the products to display based on the visibleCount
 	const visibleProducts = filteredData.slice(0, visibleCount);
 
 	const loadMore = () => {

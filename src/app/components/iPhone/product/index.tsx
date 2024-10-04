@@ -63,7 +63,7 @@ fragment ProductInterfaceField on ProductInterface {
 const variables = {
 	filter: {
 		category_uid: {
-			eq: 'Mjgx',
+			eq: 'Mjgx', // Category for iPhones
 		},
 	},
 	pageSize: 200,
@@ -83,7 +83,6 @@ async function fetchProductListData() {
 	});
 
 	const data = await response.json();
-
 	return data.data.products.items as Product[];
 }
 
@@ -95,14 +94,48 @@ const ProductList: React.FC = () => {
 	});
 
 	const [activeTab, setActiveTab] = useState<string>('iPhone 16');
+	const [activeSubTab, setActiveSubTab] = useState<string>('');
 	const [filteredData, setFilteredData] = useState<Product[]>([]);
 	const [visibleCount, setVisibleCount] = useState<number>(10);
 
-	const tabs = ['iPhone 16', 'iPhone 15', 'iPhone 14', 'iPhone 13', 'iPhone 11'];
+	const tabs = [
+		{
+			name: 'iPhone 16',
+			subTabs: ['iPhone 16 Pro Max', 'iPhone 16 Pro', 'iPhone 16 Plus', 'iPhone 16'],
+		},
+		{
+			name: 'iPhone 15',
+			subTabs: ['iPhone 15 Pro Max', 'iPhone 15 Pro', 'iPhone 15 Plus', 'iPhone 15'],
+		},
+		{
+			name: 'iPhone 14',
+			subTabs: ['iPhone 14 Pro Max', 'iPhone 14 Pro', 'iPhone 14 Plus', 'iPhone 14'],
+		},
+		{
+			name: 'iPhone 13',
+			subTabs: [],
+		},
+		{
+			name: 'iPhone 11',
+			subTabs: [],
+		},
+	];
 
 	useEffect(() => {
-		// Filter products based on the active tab
-		const filtered = data?.filter((product) => product.name.includes(activeTab));
+		const filtered = data?.filter((product) => {
+			const matchesTab =
+				(activeTab === 'iPhone 16' && activeSubTab === 'iPhone 16') ||
+				(activeTab === 'iPhone 15' && activeSubTab === 'iPhone 15') ||
+				(activeTab === 'iPhone 14' && activeSubTab === 'iPhone 14')
+					? product.name.includes(activeTab) &&
+					  !product.name.includes('Pro') &&
+					  !product.name.includes('Plus')
+					: product.name.includes(activeTab);
+
+			const matchesSubTab = activeSubTab ? product.name.includes(activeSubTab) : true;
+
+			return matchesTab && matchesSubTab;
+		});
 		setFilteredData(filtered || []);
 
 		// Adjust visible count based on window size
@@ -120,7 +153,7 @@ const ProductList: React.FC = () => {
 		return () => {
 			window.removeEventListener('resize', handleResize); // Clean up the event listener
 		};
-	}, [data, activeTab]);
+	}, [data, activeTab, activeSubTab]);
 
 	if (isLoading) {
 		return (
@@ -154,24 +187,53 @@ const ProductList: React.FC = () => {
 					/>
 					<div className='tabs'>
 						{tabs.map((tab) => (
-							<button
-								key={tab}
-								onClick={() => setActiveTab(tab)}
-								className={activeTab === tab ? 'tab active' : 'tab'}
-								style={{
-									color: activeTab === tab ? 'white' : '#000',
-									backgroundColor: activeTab === tab ? '#ef373e' : '#f1f1f1',
-									border: activeTab === tab ? '1px solid #ef373e' : '1px solid #ccc',
-									padding: '10px 20px',
-									margin: '5px',
-									borderRadius: '5px',
-									cursor: 'pointer',
-								}}
-							>
-								{tab}
-							</button>
+							<div key={tab.name} style={{ marginBottom: '10px' }}>
+								<button
+									onClick={() => {
+										setActiveTab(tab.name);
+										setActiveSubTab(''); // Reset sub-tab when changing main tab
+									}}
+									className={activeTab === tab.name ? 'tab active' : 'tab'}
+									style={{
+										color: activeTab === tab.name ? 'white' : '#000',
+										backgroundColor: activeTab === tab.name ? '#ef373e' : '#f1f1f1',
+										border: activeTab === tab.name ? '1px solid #ef373e' : '1px solid #ccc',
+										padding: '10px 20px',
+										margin: '5px',
+										borderRadius: '5px',
+										cursor: 'pointer',
+									}}
+								>
+									{tab.name}
+								</button>
+							</div>
 						))}
 					</div>
+
+					{/* Fixed Sub-Tabs */}
+					<div style={{ display: 'flex', marginBottom: '12px' }}>
+						{tabs
+							.find((tab) => tab.name === activeTab)
+							?.subTabs.map((subTab) => (
+								<button
+									key={subTab}
+									onClick={() => setActiveSubTab(subTab)}
+									className={activeSubTab === subTab ? 'sub-tab active' : 'sub-tab'}
+									style={{
+										color: activeSubTab === subTab ? 'white' : '#000',
+										backgroundColor: activeSubTab === subTab ? '#ef373e' : '#f1f1f1',
+										border: activeSubTab === subTab ? '1px solid #ef373e' : '1px solid #ccc',
+										padding: '5px 10px',
+										margin: '5px',
+										borderRadius: '5px',
+										cursor: 'pointer',
+									}}
+								>
+									{subTab}
+								</button>
+							))}
+					</div>
+
 					<div className='upgrade'>
 						{visibleProducts.map((product, index) => (
 							<Link
@@ -209,12 +271,7 @@ const ProductList: React.FC = () => {
 						))}
 					</div>
 					{visibleCount < filteredData.length && (
-						<div
-							style={{
-								textAlign: 'center',
-								marginTop: '20px',
-							}}
-						>
+						<div style={{ textAlign: 'center', marginTop: '20px' }}>
 							<button
 								onClick={loadMore}
 								style={{

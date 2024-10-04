@@ -1,10 +1,6 @@
 'use client';
-import React, { MutableRefObject, useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import 'swiper/css';
-import 'swiper/css/navigation';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { Spin } from 'antd';
@@ -68,7 +64,7 @@ fragment ProductInterfaceField on ProductInterface {
 const variables = {
 	filter: {
 		category_uid: {
-			eq: 'MTk2',
+			eq: 'MTk2', // Assuming this is the category ID for iPads
 		},
 	},
 	pageSize: 200,
@@ -100,18 +96,30 @@ const ProductIpad: React.FC = () => {
 	});
 
 	const [activeTab, setActiveTab] = useState<string>('Pro');
+	const [visibleCount, setVisibleCount] = useState<number>(10); // Initial number of products to show
 	const [filteredData, setFilteredData] = useState<Product[]>([]);
 
 	const tabs = ['Pro', 'Air', 'Gen', 'Mini'];
 
 	useEffect(() => {
-		if (activeTab === 'Pro') {
-			setFilteredData(data || []);
-		} else {
-			const filtered = data?.filter((product) => product.name.toLowerCase().includes(activeTab.toLowerCase()));
-			setFilteredData(filtered || []);
-		}
-	}, [activeTab, data]);
+		const filtered = data?.filter((product) => product.name.includes(activeTab));
+		setFilteredData(filtered || []);
+
+		const handleResize = () => {
+			if (window.innerWidth < 768) {
+				setVisibleCount(4);
+			} else {
+				setVisibleCount(10);
+			}
+		};
+
+		handleResize();
+		window.addEventListener('resize', handleResize);
+
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, [data, activeTab]);
 
 	if (isLoading) {
 		return (
@@ -125,10 +133,12 @@ const ProductIpad: React.FC = () => {
 		return <div>Error loading data</div>;
 	}
 
-	const groupedProducts = [];
-	for (let i = 0; i < filteredData.length; i += 2) {
-		groupedProducts.push(filteredData.slice(i, i + 2));
-	}
+	// Get the products to display based on the visibleCount
+	const visibleProducts = filteredData.slice(0, visibleCount);
+
+	const loadMore = () => {
+		setVisibleCount((prevCount) => prevCount + 5); // Load 5 more items on each click
+	};
 
 	return (
 		<div className='product-list'>
@@ -162,73 +172,58 @@ const ProductIpad: React.FC = () => {
 						))}
 					</div>
 					<div className='upgrade'>
-						<Swiper
-							modules={[Navigation]}
-							spaceBetween={20}
-							slidesPerView={5}
-							speed={1000}
-							navigation
-							breakpoints={{
-								300: {
-									slidesPerView: 1,
-								},
-								310: {
-									slidesPerView: 2,
-									spaceBetween: 10,
-								},
-								768: {
-									slidesPerView: 3,
-								},
-								850: {
-									slidesPerView: 4,
-								},
-								1200: {
-									slidesPerView: 5,
-								},
-							}}
-						>
-							{groupedProducts.map((group, index) => (
-								<SwiperSlide key={index}>
-									<div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-										{group.map((product, productIndex) => (
-											<Link
-												key={productIndex}
-												href={`https://bachlongmobile.com/products/${product.url_key}`}
-												passHref
-												target='_blank'
-												rel='noopener noreferrer'
-												style={{ textDecoration: 'none', color: 'black' }}
-											>
-												<div className='upgrade-item'>
-													<div className='upgrade-item-img'>
-														<Image
-															src={product.image.url}
-															width={1400}
-															height={1200}
-															quality={100}
-															alt={`product-${index}`}
-														/>
-													</div>
-													<div className='upgrade-item-content'>
-														<h4 className='upgrade-item-content-tt'>{product.name}</h4>
-														<div className='upgrade-item-content-body'>
-															<span className='upgrade-item-content-body-tt'>Giá: </span>
-															<div className='upgrade-item-content-body-price'>
-																{product.price_range.minimum_price.final_price.value.toLocaleString(
-																	'vi-VN'
-																)}{' '}
-																{product.price_range.minimum_price.final_price.currency}
-															</div>
-														</div>
-													</div>
-												</div>
-											</Link>
-										))}
+						{visibleProducts.map((product, index) => (
+							<Link
+								key={index}
+								href={`https://bachlongmobile.com/products/${product.url_key}`}
+								passHref
+								target='_blank'
+								rel='noopener noreferrer'
+								style={{ textDecoration: 'none', color: 'black' }}
+							>
+								<div className='upgrade-item'>
+									<div className='upgrade-item-img'>
+										<Image
+											src={product.image.url}
+											width={1400}
+											height={1200}
+											quality={100}
+											alt={`product-${index}`}
+										/>
 									</div>
-								</SwiperSlide>
-							))}
-						</Swiper>
+									<div className='upgrade-item-content'>
+										<h4 className='upgrade-item-content-tt'>{product.name}</h4>
+										<div className='upgrade-item-content-body'>
+											<span className='upgrade-item-content-body-tt'>Giá: </span>
+											<div className='upgrade-item-content-body-price'>
+												{product.price_range.minimum_price.final_price.value.toLocaleString(
+													'vi-VN'
+												)}{' '}
+												{product.price_range.minimum_price.final_price.currency}
+											</div>
+										</div>
+									</div>
+								</div>
+							</Link>
+						))}
 					</div>
+					{visibleCount < filteredData.length && (
+						<div style={{ textAlign: 'center', marginTop: '20px' }}>
+							<button
+								onClick={loadMore}
+								style={{
+									backgroundColor: '#ef373e',
+									color: 'white',
+									border: 'none',
+									padding: '10px 20px',
+									borderRadius: '5px',
+									cursor: 'pointer',
+								}}
+							>
+								Xem thêm
+							</button>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>

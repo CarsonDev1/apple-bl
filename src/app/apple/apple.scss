@@ -4,15 +4,14 @@ $background: #0c0066;
 
 .apple {
 	background: $background;
-	padding-top: 1.2rem;
 	.sticky-category {
 		position: fixed;
 		display: flex;
 		flex-direction: row;
 		gap: 0.75rem;
-		width: 15%;
+		width: 20%;
 		top: 12rem;
-		left: 5%;
+		left: 0;
 		z-index: 50;
 		animation: slideIn 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
 		transition: opacity 0.8s ease, transform 0.8s ease;
@@ -46,7 +45,7 @@ $background: #0c0066;
 			border: 0.1rem solid #eee;
 			@media screen and (max-width: 1024px) {
 				display: flex;
-				width: 90vw;
+				width: 100vw;
 			}
 		}
 	}

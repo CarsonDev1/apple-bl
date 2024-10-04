@@ -172,8 +172,9 @@ const ProductMac: React.FC = () => {
 								300: {
 									slidesPerView: 1,
 								},
-								475: {
+								310: {
 									slidesPerView: 2,
+									spaceBetween: 10,
 								},
 								768: {
 									slidesPerView: 3,

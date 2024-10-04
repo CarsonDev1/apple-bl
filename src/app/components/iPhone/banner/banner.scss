@@ -2,23 +2,44 @@
 	background: #0c0066;
 	width: 100%;
 	position: relative;
+	overflow: hidden;
 	&-content {
 		position: absolute;
-		bottom: 10%;
-		left: 50%;
+		bottom: 0%;
+		left: 60%;
 		transform: translate(-50%, -50%);
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		gap: 3.2rem;
+		width: 100%;
+		@media screen and (max-width: 1200px) {
+			gap: 2.4rem;
+		}
+		@media screen and (max-width: 768px) {
+			gap: 1.2rem;
+			left: 50%;
+		}
 		&-item {
 			position: relative;
 			transition: all 0.3s ease-in-out;
-			transform: scale(1.1);
 			cursor: pointer;
+			height: 8rem;
+
+			@media screen and (max-width: 1200px) {
+				height: 6rem;
+			}
+
+			@media screen and (max-width: 768px) {
+				height: 4rem;
+			}
+
+			@media screen and (max-width: 576px) {
+				height: 3rem;
+			}
 
 			&:hover {
-				transform: scale(1.2);
+				transform: scale(1.1);
 
 				&::before {
 					content: '';

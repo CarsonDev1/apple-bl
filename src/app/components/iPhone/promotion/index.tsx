@@ -9,10 +9,30 @@ const Promotion = () => {
 			<div className='container'>
 				<div className='promotion-header'>4 đặc quyền mua hàng tại Bạch Long Mobile</div>
 				<div className='promotion-list'>
-					<Image src='/apple/privilege-01.png' alt='privilege-01' width={270} height={117} />
-					<Image src='/apple/privilege-02.png' alt='privilege-02' width={270} height={117} />
-					<Image src='/apple/privilege-03.png' alt='privilege-03' width={270} height={117} />
-					<Image src='/apple/privilege-04.png' alt='privilege-04' width={270} height={117} />
+					<div className='promotion-list-item promotion-list-item-1'>
+						<Image src='/apple/privilege-icon-01.png' alt='privilege-icon-01' width={270} height={117} />
+						<p className='promotion-text'>
+							Vòng quay may mắn <br /> Lì xì Tết Apple
+						</p>
+					</div>
+					<div className='promotion-list-item promotion-list-item-2'>
+						<Image src='/apple/privilege-icon-02.png' alt='privilege-icon-02' width={270} height={117} />
+						<p className='promotion-text'>
+							Trả góp <br /> lãi suất 0%
+						</p>
+					</div>
+					<div className='promotion-list-item promotion-list-item-3'>
+						<Image src='/apple/privilege-icon-03.png' alt='privilege-icon-03' width={270} height={117} />
+						<p className='promotion-text'>
+							Thu cũ <br /> đổi mới
+						</p>
+					</div>
+					<div className='promotion-list-item promotion-list-item-4'>
+						<Image src='/apple/privilege-icon-04.png' alt='privilege-icon-04' width={270} height={117} />
+						<p className='promotion-text'>
+							Ngày đổi trả <br /> miễn phí
+						</p>
+					</div>
 				</div>
 				<div className='promotion-wrap'>
 					<video width='612' height='240' controls preload='none'>

@@ -164,15 +164,16 @@ const ProductList: React.FC = () => {
 						<Swiper
 							modules={[Navigation]}
 							spaceBetween={20}
-							slidesPerView={5}
+							slidesPerView='auto'
 							speed={1000}
 							navigation
 							breakpoints={{
 								300: {
 									slidesPerView: 1,
 								},
-								475: {
+								310: {
 									slidesPerView: 2,
+									spaceBetween: 10,
 								},
 								768: {
 									slidesPerView: 3,

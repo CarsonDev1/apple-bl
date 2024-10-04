@@ -103,46 +103,42 @@ const Apple = () => {
 			<div id='item-access'>
 				<ProductAccess />
 			</div>
-			<div>
-				<div className={`sticky-category ${isStickyVisible ? 'visible' : 'hidden'}`}>
-					<div className='category-desktop'>
-						{categories.map((category, index) => (
-							<div
-								key={index}
-								className={`category-item ${activeCategory === category.id ? 'active' : 'default'}`}
-								onClick={() => handleClick(category.id)}
-							>
-								<Image src={category.src} width={400} height={500} alt={category.alt} />
-							</div>
-						))}
-					</div>
-					<div className='category-mobile'>
-						<Swiper
-							spaceBetween={10}
-							breakpoints={{
-								300: {
-									slidesPerView: 5,
-								},
-								1200: {
-									slidesPerView: 6,
-								},
-							}}
-							slidesPerView='auto'
+			<div className={`sticky-category ${isStickyVisible ? 'visible' : 'hidden'}`}>
+				<div className='category-desktop'>
+					{categories.map((category, index) => (
+						<div
+							key={index}
+							className={`category-item ${activeCategory === category.id ? 'active' : 'default'}`}
+							onClick={() => handleClick(category.id)}
 						>
-							{categories.map((category, index) => (
-								<SwiperSlide key={index}>
-									<div
-										className={`swiper-slide ${
-											activeCategory === category.id ? 'active' : 'default'
-										}`}
-										onClick={() => handleClick(category.id)}
-									>
-										<Image src={category.src} width={400} height={500} alt={category.alt} />
-									</div>
-								</SwiperSlide>
-							))}
-						</Swiper>
-					</div>
+							<Image src={category.src} width={400} height={500} alt={category.alt} />
+						</div>
+					))}
+				</div>
+				<div className='category-mobile'>
+					<Swiper
+						spaceBetween={10}
+						breakpoints={{
+							300: {
+								slidesPerView: 5,
+							},
+							1200: {
+								slidesPerView: 6,
+							},
+						}}
+						slidesPerView='auto'
+					>
+						{categories.map((category, index) => (
+							<SwiperSlide key={index}>
+								<div
+									className={`swiper-slide ${activeCategory === category.id ? 'active' : 'default'}`}
+									onClick={() => handleClick(category.id)}
+								>
+									<Image src={category.src} width={400} height={500} alt={category.alt} />
+								</div>
+							</SwiperSlide>
+						))}
+					</Swiper>
 				</div>
 			</div>
 		</div>

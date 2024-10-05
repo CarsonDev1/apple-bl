@@ -21,6 +21,9 @@ const Promotion = () => {
 					<Link href='https://bachlongmobile.com/news/tin-cong-nghe/chuong-trinh-n-ng-cap-bao-hanh-iphone-16-series-tai-bach-long-mobile/'>
 						<Image src='/apple/privilege-04.png' alt='privilege-04' width={270} height={117} />
 					</Link>
+					<Link href='https://bachlongmobile.com/news/tin-cong-nghe/chuong-trinh-n-ng-cap-bao-hanh-iphone-16-series-tai-bach-long-mobile/'>
+						<Image src='/apple/privilege-05.png' alt='privilege-05' width={270} height={117} />
+					</Link>
 				</div>
 			</div>
 

@@ -235,26 +235,31 @@ const ProductList: React.FC = () => {
 					  !product.name.includes('Plus')
 					: product.name.includes(activeTab);
 
-			const matchesSubTab = activeSubTab ? product.name.includes(activeSubTab) : true;
+			const matchesSubTab = activeSubTab
+				? activeSubTab.includes('Pro Max')
+					? product.name.includes('Pro Max')
+					: activeSubTab.includes('Pro')
+					? product.name.includes('Pro') && !product.name.includes('Pro Max')
+					: product.name.includes(activeSubTab)
+				: true;
 
 			return matchesTab && matchesSubTab;
 		});
 		setFilteredData(filtered || []);
 
-		// Adjust visible count based on window size
 		const handleResize = () => {
 			if (window.innerWidth < 768) {
-				setVisibleCount(4); // Show 4 items if screen width < 768px
+				setVisibleCount(4);
 			} else {
-				setVisibleCount(10); // Show 10 items if screen width >= 768px
+				setVisibleCount(10);
 			}
 		};
 
-		handleResize(); // Initial check
-		window.addEventListener('resize', handleResize); // Update count on resize
+		handleResize();
+		window.addEventListener('resize', handleResize);
 
 		return () => {
-			window.removeEventListener('resize', handleResize); // Clean up the event listener
+			window.removeEventListener('resize', handleResize);
 		};
 	}, [data, activeTab, activeSubTab]);
 
@@ -270,11 +275,10 @@ const ProductList: React.FC = () => {
 		return <div>Error loading data</div>;
 	}
 
-	// Show only the products up to the visibleCount
 	const visibleProducts = filteredData.slice(0, visibleCount);
 
 	const loadMore = () => {
-		setVisibleCount((prevCount) => prevCount + 5); // Show 5 more items on click
+		setVisibleCount((prevCount) => prevCount + 5);
 	};
 
 	return (
@@ -294,7 +298,7 @@ const ProductList: React.FC = () => {
 								<button
 									onClick={() => {
 										setActiveTab(tab.name);
-										setActiveSubTab(''); // Reset sub-tab when changing main tab
+										setActiveSubTab('');
 									}}
 									className={activeTab === tab.name ? 'tab active' : 'tab'}
 									style={{
@@ -313,7 +317,6 @@ const ProductList: React.FC = () => {
 						))}
 					</div>
 
-					{/* Fixed Sub-Tabs */}
 					<div style={{ display: 'flex', marginBottom: '12px' }}>
 						{tabs
 							.find((tab) => tab.name === activeTab)

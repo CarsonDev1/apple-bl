@@ -34,14 +34,14 @@ const Promotion = () => {
 						</p>
 					</div>
 				</div>
-				<div className='promotion-wrap'>
+				{/* <div className='promotion-wrap'>
 					<video width='612' height='240' controls preload='none'>
 						<source src='/apple/video-apple-01.mp4' type='video/mp4' />
 					</video>
 					<video width='612' height='240' controls preload='none'>
 						<source src='/apple/video-apple-02.mp4' type='video/mp4' />
 					</video>
-				</div>
+				</div> */}
 
 				<div className='promotion-header'>Ưu đãi trả góp siêu hời</div>
 				<div className='promotion-list'>

@@ -317,7 +317,7 @@ const ProductList: React.FC = () => {
 						))}
 					</div>
 
-					<div style={{ display: 'flex', marginBottom: '12px' }}>
+					<div style={{ display: 'flex', marginBottom: '12px' }} className='sub-tab-list'>
 						{tabs
 							.find((tab) => tab.name === activeTab)
 							?.subTabs.map((subTab) => (
@@ -373,31 +373,33 @@ const ProductList: React.FC = () => {
 									<div className='upgrade-item-content'>
 										<h4 className='upgrade-item-content-tt'>{product.name}</h4>
 										<div className='upgrade-item-content-body'>
-											<span className='upgrade-item-content-body-tt'>Giá: </span>
 											<div className='upgrade-item-content-body-price'>
 												{product.price_range.minimum_price.final_price.value.toLocaleString(
 													'vi-VN'
 												)}{' '}
 												{product.price_range.minimum_price.final_price.currency}
 											</div>
-										</div>
-										<div className='upgrade-item-content-body-reduced'>
-											<div className='price-reduced'>
-												{product.attributes && product.attributes[0]?.value
-													? Number(product.attributes[0].value).toLocaleString('vi-VN')
-													: 'N/A'}{' '}
-												{product.price_range.minimum_price.final_price.currency}
-											</div>
+											<div className='upgrade-item-content-body-reduced'>
+												<div className='price-reduced'>
+													{product.attributes && product.attributes[0]?.value
+														? Number(product.attributes[0].value).toLocaleString('vi-VN')
+														: ''}{' '}
+													{product.attributes[0].value &&
+														product.price_range.minimum_price.final_price.currency}
+												</div>
 
-											<div className='percent'>
-												-
-												{Math.ceil(
-													((product.attributes[0].value -
-														product.price_range.minimum_price.final_price.value) /
-														product.attributes[0].value) *
-														100
+												{product.attributes[0].value && (
+													<div className='percent'>
+														-
+														{Math.ceil(
+															((product.attributes[0].value -
+																product.price_range.minimum_price.final_price.value) /
+																product.attributes[0].value) *
+																100
+														)}
+														%
+													</div>
 												)}
-												%
 											</div>
 										</div>
 									</div>

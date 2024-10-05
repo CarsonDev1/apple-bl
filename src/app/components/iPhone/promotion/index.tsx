@@ -7,8 +7,8 @@ const Promotion = () => {
 	return (
 		<div className='promotion'>
 			<div className='container'>
-				<div className='promotion-header'>4 đặc quyền mua hàng tại Bạch Long Mobile</div>
-				<div className='promotion-list'>
+				<div className='promotion-header'>5 đặc quyền mua hàng tại Bạch Long Mobile</div>
+				<div className='promotion-list-privilege'>
 					<Link href='https://bachlongmobile.com/news/tin-cong-nghe/tet-apple-vong-quay-may-man-nhan-li-xi-tet-cung-bach-long-mobile/'>
 						<Image src='/apple/privilege-01.png' alt='privilege-01' width={270} height={117} />
 					</Link>

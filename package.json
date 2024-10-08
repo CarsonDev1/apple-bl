@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@leenguyen/react-flip-clock-countdown": "^1.6.0",
     "@tanstack/react-query": "^5.56.2",
     "@tanstack/react-query-devtools": "^5.58.0",
     "@vercel/speed-insights": "^1.0.12",

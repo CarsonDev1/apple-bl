@@ -14,6 +14,8 @@ import ProductWatch from '@/app/components/iPhone/product-watch';
 import ProductMac from '@/app/components/iPhone/product-mac';
 import ProductAirPods from '@/app/components/iPhone/product-airpods';
 import ProductAccess from '@/app/components/iPhone/product-access';
+import TimeLine from '@/app/components/iPhone/timeline';
+import Rules from '@/app/components/iPhone/rules';
 
 const categories = [
 	{ id: 'item-iphone', src: '/apple/category-fixed-01.png', alt: 'category-fixed-01' },
@@ -36,6 +38,10 @@ const Apple = () => {
 			element.scrollIntoView({ behavior: 'smooth' });
 			setActiveCategory(id);
 		}
+	};
+
+	const handleScrollToRules = () => {
+		handleClick('item-rules');
 	};
 
 	useEffect(() => {
@@ -81,6 +87,7 @@ const Apple = () => {
 	return (
 		<div className='apple'>
 			<Banner />
+			<TimeLine onScrollToRules={handleScrollToRules} />
 			<Promotion />
 			<div ref={categoryRef}>
 				<Category />
@@ -102,6 +109,9 @@ const Apple = () => {
 			</div>
 			<div id='item-access'>
 				<ProductAccess />
+			</div>
+			<div id='item-rules'>
+				<Rules />
 			</div>
 			<div className={`sticky-category ${isStickyVisible ? 'visible' : 'hidden'}`}>
 				<div className='category-desktop'>

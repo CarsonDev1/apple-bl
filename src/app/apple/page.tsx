@@ -7,7 +7,7 @@ import 'swiper/css';
 import './apple.scss';
 import Banner from '@/components/iPhone/banner';
 import Promotion from '@/components/iPhone/promotion';
-import Category from '@/components/iPhone/category';
+// import Category from '@/components/iPhone/category';
 import ProductList from '@/components/iPhone/product';
 import ProductIpad from '@/components/iPhone/product-ipad';
 import ProductWatch from '@/components/iPhone/product-watch';
@@ -89,9 +89,7 @@ const Apple = () => {
 			<Banner />
 			<TimeLine onScrollToRules={handleScrollToRules} />
 			<Promotion />
-			<div ref={categoryRef}>
-				<Category />
-			</div>
+			<div ref={categoryRef}>{/* <Category /> */}</div>
 			<div id='item-iphone'>
 				<ProductList />
 			</div>

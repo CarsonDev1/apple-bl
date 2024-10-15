@@ -392,74 +392,69 @@ const AppleList: React.FC = () => {
 								rel='noopener noreferrer'
 								style={{ textDecoration: 'none', color: 'black' }}
 							>
-								<div className='upgrade-item-wrap'>
-									<div className='upgrade-item'>
-										<div className='upgrade-item-header'>
-											<Image
-												src={DecorProduct}
-												width={10}
-												height={10}
-												quality={100}
-												alt='decor-product'
-												className='decor-product'
-											/>
-											<span></span>
-											<span className='percent'>Trả góp 0%</span>
-										</div>
-										<div className='upgrade-item-img'>
-											<Image
-												src={product.image.url}
-												width={1400}
-												height={1200}
-												quality={100}
-												alt={`product-${index}`}
-											/>
-										</div>
-										<div className='upgrade-item-content'>
-											<h4 className='upgrade-item-content-tt'>{product.name}</h4>
-											<div className='upgrade-item-content-body'>
-												<div className='upgrade-item-content-body-price'>
-													{product.price_range.minimum_price.final_price.value.toLocaleString(
-														'vi-VN'
-													)}{' '}
-													{product.price_range.minimum_price.final_price.currency}
+								<div className='upgrade-item'>
+									<div className='upgrade-item-header'>
+										<Image
+											src={DecorProduct}
+											width={10}
+											height={10}
+											quality={100}
+											alt='decor-product'
+											className='decor-product'
+										/>
+										<span></span>
+										<span className='percent'>Trả góp 0%</span>
+									</div>
+									<div className='upgrade-item-img'>
+										<Image
+											src={product.image.url}
+											width={1400}
+											height={1200}
+											quality={100}
+											alt={`product-${index}`}
+										/>
+									</div>
+									<div className='upgrade-item-content'>
+										<h4 className='upgrade-item-content-tt'>{product.name}</h4>
+										<div className='upgrade-item-content-body'>
+											<div className='upgrade-item-content-body-price'>
+												{product.price_range.minimum_price.final_price.value.toLocaleString(
+													'vi-VN'
+												)}{' '}
+												{product.price_range.minimum_price.final_price.currency}
+											</div>
+											<div className='upgrade-item-content-body-reduced'>
+												<div className='price-reduced'>
+													{product.attributes && product.attributes[0]?.value
+														? Number(product.attributes[0].value).toLocaleString('vi-VN')
+														: ''}{' '}
+													{product.attributes[0].value &&
+														product.price_range.minimum_price.final_price.currency}
 												</div>
-												<div className='upgrade-item-content-body-reduced'>
-													<div className='price-reduced'>
-														{product.attributes && product.attributes[0]?.value
-															? Number(product.attributes[0].value).toLocaleString(
-																	'vi-VN'
-															  )
-															: ''}{' '}
-														{product.attributes[0].value &&
-															product.price_range.minimum_price.final_price.currency}
-													</div>
 
-													{product.attributes[0].value && (
-														<div className='percent'>
-															-
-															{Math.ceil(
-																((product.attributes[0].value -
-																	product.price_range.minimum_price.final_price
-																		.value) /
-																	product.attributes[0].value) *
-																	100
-															)}
-															%
-														</div>
-													)}
-												</div>
+												{product.attributes[0].value && (
+													<div className='percent'>
+														-
+														{Math.ceil(
+															((product.attributes[0].value -
+																product.price_range.minimum_price.final_price.value) /
+																product.attributes[0].value) *
+																100
+														)}
+														%
+													</div>
+												)}
 											</div>
-											<div className='gift'>
-												<Image
-													src={Gift}
-													width={100}
-													height={100}
-													alt='gift'
-													className='gift-img'
-												/>
-												<span className='gift-text'>Tặng bộ sạc cao cấp 20W</span>
-											</div>
+										</div>
+										<div className='gift'>
+											<Image
+												src={Gift}
+												width={100}
+												height={100}
+												alt='gift'
+												className='gift-img'
+											/>
+											<span className='gift-text'>Tặng bộ sạc cao cấp 20W</span>
 										</div>
 									</div>
 								</div>

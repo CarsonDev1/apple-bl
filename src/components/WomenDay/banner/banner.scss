@@ -8,15 +8,12 @@
 		justify-content: center;
 		gap: 2.4rem;
 
-		img {
-			object-fit: fill;
-		}
-
 		.countdown-item {
 			position: relative;
 			img {
 				width: 10rem;
 				height: 10rem;
+				object-fit: fill;
 			}
 		}
 

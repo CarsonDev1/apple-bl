@@ -1,0 +1,50 @@
+.banner {
+	position: relative;
+	text-align: center;
+	z-index: 1;
+
+	.countdown {
+		display: flex;
+		justify-content: center;
+		gap: 2.4rem;
+
+		img {
+			object-fit: fill;
+		}
+
+		.countdown-item {
+			position: relative;
+			img {
+				width: 10rem;
+				height: 10rem;
+			}
+		}
+
+		.countdown-box {
+			text-align: center;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+			height: 100%;
+			padding: 1rem;
+			width: 100%;
+
+			.count {
+				font-size: 4.2rem;
+				font-weight: 600;
+				color: #fa7cac;
+			}
+
+			.label {
+				font-size: 1.4rem;
+				color: #333;
+				font-weight: 600;
+			}
+		}
+	}
+}

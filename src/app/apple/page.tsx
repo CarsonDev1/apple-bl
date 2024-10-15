@@ -5,17 +5,17 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import './apple.scss';
-import Banner from '@/app/components/iPhone/banner';
-import Promotion from '@/app/components/iPhone/promotion';
-import Category from '@/app/components/iPhone/category';
-import ProductList from '@/app/components/iPhone/product';
-import ProductIpad from '@/app/components/iPhone/product-ipad';
-import ProductWatch from '@/app/components/iPhone/product-watch';
-import ProductMac from '@/app/components/iPhone/product-mac';
-import ProductAirPods from '@/app/components/iPhone/product-airpods';
-import ProductAccess from '@/app/components/iPhone/product-access';
-import TimeLine from '@/app/components/iPhone/timeline';
-import Rules from '@/app/components/iPhone/rules';
+import Banner from '@/components/iPhone/banner';
+import Promotion from '@/components/iPhone/promotion';
+import Category from '@/components/iPhone/category';
+import ProductList from '@/components/iPhone/product';
+import ProductIpad from '@/components/iPhone/product-ipad';
+import ProductWatch from '@/components/iPhone/product-watch';
+import ProductMac from '@/components/iPhone/product-mac';
+import ProductAirPods from '@/components/iPhone/product-airpods';
+import ProductAccess from '@/components/iPhone/product-access';
+import TimeLine from '@/components/iPhone/timeline';
+import Rules from '@/components/iPhone/rules';
 
 const categories = [
 	{ id: 'item-iphone', src: '/apple/category-fixed-01.png', alt: 'category-fixed-01' },

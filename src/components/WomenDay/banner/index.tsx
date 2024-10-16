@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import './banner.scss';
 import Image from 'next/image';
-import banner from '../../../../public/women-day/banner-women.jpg';
+import banner from '../../../../public/women-day/banner-women.png';
 import countdown from '../../../../public/women-day/decor-countdown.png';
 
 interface TimeLeft {
@@ -54,7 +54,7 @@ const Banner: React.FC<TimeLineProps> = ({ onScrollToRules }) => {
 
 	return (
 		<div className='banner'>
-			<Image src={banner} alt='banner' />
+			<Image src={banner} alt='banner' width={1920} height={1200} className='banner-img' />
 			<div className='container'>
 				<div className='countdown-wrap'>
 					<div className='countdown'>

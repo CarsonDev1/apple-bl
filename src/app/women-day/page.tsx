@@ -16,11 +16,11 @@ import AndroidList from '@/components/WomenDay/android';
 import LaptopList from '@/components/WomenDay/laptop';
 
 const categories = [
-	{ id: 'item-iphone', name: 'iPhone' },
-	{ id: 'item-ipad', name: 'iPad' },
-	{ id: 'item-airpods', name: 'Samsung' },
-	{ id: 'item-mac', name: 'Mac' },
-	{ id: 'item-watch', name: 'Watch' },
+	{ id: 'item-iphone', name: 'Phụ kiện tặng nàng' },
+	{ id: 'item-ipad', name: 'Apple' },
+	{ id: 'item-airpods', name: 'Likenew 99%' },
+	{ id: 'item-mac', name: 'Android' },
+	{ id: 'item-watch', name: 'Laptop' },
 ];
 
 const WomenDay = () => {
@@ -98,13 +98,13 @@ const WomenDay = () => {
 			<div id='item-ipad'>
 				<AppleList />
 			</div>
-			<div id='item-percent'>
+			<div id='item-airpods'>
 				<ProductPercent />
 			</div>
-			<div id='item-android'>
+			<div id='item-mac'>
 				<AndroidList />
 			</div>
-			<div id='item-laptop'>
+			<div id='item-watch'>
 				<LaptopList />
 			</div>
 

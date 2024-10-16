@@ -118,6 +118,23 @@
 					position: relative;
 					overflow: hidden;
 
+					max-height: 21.4rem;
+
+					@media screen and (max-width: 1200px) {
+						max-height: 25rem;
+					}
+					@media screen and (max-width: 1024px) {
+						max-height: 20.6rem;
+					}
+					@media screen and (max-width: 850px) {
+						max-height: 24.6rem;
+					}
+					@media screen and (max-width: 768px) {
+						max-height: 26rem;
+					}
+					@media screen and (max-width: 480px) {
+						max-height: 17.8rem;
+					}
 					.img-content {
 						transition: all 0.5s ease-in-out;
 					}

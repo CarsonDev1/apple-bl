@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Spin } from 'antd';
 import './product.scss';
 import DecorProduct from '../../../../public/women-day/decor-product.png';
-import DecorWomen from '../../../../public/women-day/decor-women.png';
+import DecorWomen from '../../../../public/women-day/decor-women-01.png';
 import FrameProduct from '../../../../public/women-day/frame-product.png';
 import Gift from '../../../../public/old/gift.png';
 
@@ -286,13 +286,12 @@ const ProductList: React.FC = () => {
 	};
 
 	return (
-		<div className='product-list'>
+		<div className='product-list' id='item-iphone'>
 			<div className='upgrade-list'>
-				<div className='women-decor'>
-					<Image src={DecorWomen} width={1920} height={1200} alt='product-banner-01' className='' />
-					<span className='women-text'>Phụ kiện tặng nàng chỉ từ 10k</span>
-				</div>
 				<div className='container'>
+					<div className='women-decor'>
+						<Image src={DecorWomen} width={1920} height={1200} alt='product-banner-01' className='' />
+					</div>
 					<div className='tabs'>
 						{tabs.map((tab) => (
 							<div key={tab.name}>
@@ -365,15 +364,13 @@ const ProductList: React.FC = () => {
 										<span className='percent'>Trả góp 0%</span>
 									</div>
 									<div className='upgrade-item-img'>
-										<div className='img-content'>
-											<Image
-												src={product.image.url}
-												width={1400}
-												height={1200}
-												quality={100}
-												alt={`product-${index}`}
-											/>
-										</div>
+										<Image
+											src={product.image.url}
+											width={1400}
+											height={1200}
+											quality={100}
+											alt={`product-${index}`}
+										/>
 										<div className='frame-product'>
 											<Image
 												src={FrameProduct}

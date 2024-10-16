@@ -22,6 +22,10 @@ const Rules = () => {
 				<div className='rules-content'>
 					<h2 className='rules-section-title'>I/ THÁNG YÊU THƯƠNG – MÁY TRAO TAY NHẬN QUÀ NGAY</h2>
 					<ul className='rules-list'>
+						<li>
+							Giảm Thêm 500.000 cho khách hàng là Phụ nữ có sinh nhật trong{' '}
+							<span>tháng 🔟</span> này
+						</li>
 						<li>Giảm giá tất cả các sản phẩm Apple MỚI - CŨ lên đến 50%</li>
 						<li>Hoàn 100% chi phí di chuyển cho khách hàng trong nội thành TP.HCM (tối đa 300.000Đ)</li>
 						<li>Bạch Long chơi lớn với vòng quay may mắn vật lý:</li>

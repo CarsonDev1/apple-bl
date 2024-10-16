@@ -63,7 +63,7 @@ const Banner: React.FC<TimeLineProps> = ({ onScrollToRules }) => {
 							<div className='countdown-box'>
 								<span></span>
 								<span className='count'>{timeLeft.days}</span>
-								<span className='label'>Days</span>
+								<span className='label'>Ngày</span>
 							</div>
 						</div>
 						<div className='countdown-item'>
@@ -71,7 +71,7 @@ const Banner: React.FC<TimeLineProps> = ({ onScrollToRules }) => {
 							<div className='countdown-box'>
 								<span></span>
 								<span className='count'>{timeLeft.hours}</span>
-								<span className='label'>Hours</span>
+								<span className='label'>Giờ</span>
 							</div>
 						</div>
 						<div className='countdown-item'>
@@ -79,7 +79,7 @@ const Banner: React.FC<TimeLineProps> = ({ onScrollToRules }) => {
 							<div className='countdown-box'>
 								<span></span>
 								<span className='count'>{timeLeft.minutes}</span>
-								<span className='label'>Minutes</span>
+								<span className='label'>Phút</span>
 							</div>
 						</div>
 						<div className='countdown-item'>
@@ -87,7 +87,7 @@ const Banner: React.FC<TimeLineProps> = ({ onScrollToRules }) => {
 							<div className='countdown-box'>
 								<span></span>
 								<span className='count'>{timeLeft.seconds}</span>
-								<span className='label'>Seconds</span>
+								<span className='label'>Giây</span>
 							</div>
 						</div>
 					</div>

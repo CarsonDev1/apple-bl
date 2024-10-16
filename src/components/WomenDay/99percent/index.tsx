@@ -7,7 +7,6 @@ import './product.scss';
 import DecorProduct from '../../../../public/women-day/decor-product.png';
 import DecorWomen from '../../../../public/women-day/decor-women.png';
 import FrameProduct from '../../../../public/women-day/frame-product.png';
-import Gift from '../../../../public/old/gift.png';
 
 export interface Product {
 	id: number;
@@ -170,7 +169,7 @@ fragment ProductPriceField on ProductPrice {
 const variables = {
 	filter: {
 		category_uid: {
-			eq: 'MTk4',
+			eq: 'MzYx',
 		},
 	},
 	pageSize: 200,
@@ -193,38 +192,24 @@ async function fetchProductListData() {
 	return data.data.products.items as Product[];
 }
 
-const ProductList: React.FC = () => {
+const ProductPercent: React.FC = () => {
 	const { data, error, isLoading } = useQuery<Product[]>({
-		queryKey: ['productListData'],
+		queryKey: ['productPercentData'],
 		queryFn: fetchProductListData,
 		staleTime: 300000,
 	});
 
-	const [activeTab, setActiveTab] = useState<string>('iPhone 16');
+	const [activeTab, setActiveTab] = useState<string>('iPhone');
 	const [activeSubTab, setActiveSubTab] = useState<string>('');
 	const [filteredData, setFilteredData] = useState<Product[]>([]);
 	const [visibleCount, setVisibleCount] = useState<number>(10);
 
 	const tabs = [
 		{
-			name: 'iPhone 16',
-			subTabs: ['iPhone 16 Pro Max', 'iPhone 16 Pro', 'iPhone 16 Plus', 'iPhone 16'],
+			name: 'iPhone',
 		},
 		{
-			name: 'iPhone 15',
-			subTabs: ['iPhone 15 Pro Max', 'iPhone 15 Pro', 'iPhone 15 Plus', 'iPhone 15'],
-		},
-		{
-			name: 'iPhone 14',
-			subTabs: ['iPhone 14 Pro Max', 'iPhone 14 Pro', 'iPhone 14 Plus', 'iPhone 14'],
-		},
-		{
-			name: 'iPhone 13',
-			subTabs: [],
-		},
-		{
-			name: 'iPhone 11',
-			subTabs: [],
+			name: 'Samsung',
 		},
 	];
 
@@ -290,7 +275,7 @@ const ProductList: React.FC = () => {
 			<div className='upgrade-list'>
 				<div className='women-decor'>
 					<Image src={DecorWomen} width={1920} height={1200} alt='product-banner-01' className='' />
-					<span className='women-text'>Phụ kiện tặng nàng chỉ từ 10k</span>
+					<span className='women-text'>Máy 99%</span>
 				</div>
 				<div className='container'>
 					<div className='tabs'>
@@ -299,17 +284,18 @@ const ProductList: React.FC = () => {
 								<button
 									onClick={() => {
 										setActiveTab(tab.name);
-										setActiveSubTab('');
 									}}
 									className={activeTab === tab.name ? 'tab active' : 'tab'}
 									style={{
-										color: activeTab === tab.name ? 'white' : '#000',
-										backgroundColor: activeTab === tab.name ? '#ef373e' : '#f1f1f1',
-										border: activeTab === tab.name ? '1px solid #ef373e' : '1px solid #ccc',
-										padding: '10px 20px',
-										margin: '5px',
-										borderRadius: '5px',
+										color: activeTab === tab.name ? '#fff' : '#333',
+										backgroundColor: activeTab === tab.name ? '#ff4d4f' : '#fff',
+										border: activeTab === tab.name ? '2px solid #ff4d4f' : '2px solid #eee',
+										padding: '12px 24px',
+										margin: '8px',
+										borderRadius: '8px',
 										cursor: 'pointer',
+										transition: 'all 0.3s ease',
+										boxShadow: activeTab === tab.name ? '0 4px 8px rgba(0, 0, 0, 0.1)' : 'none',
 									}}
 								>
 									{tab.name}
@@ -444,4 +430,4 @@ const ProductList: React.FC = () => {
 	);
 };
 
-export default ProductList;
+export default ProductPercent;

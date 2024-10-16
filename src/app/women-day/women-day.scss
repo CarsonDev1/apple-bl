@@ -1,6 +1,7 @@
 .women-day {
 	position: relative;
 	z-index: 1;
+	background: #fff4e6;
 
 	.sticky-category {
 		position: fixed;
@@ -105,6 +106,10 @@
 		animation: fall 20s infinite;
 		opacity: 0.9;
 		z-index: 0;
+
+		@media screen and (max-width: 1200px) {
+			display: none;
+		}
 	}
 
 	.rose:nth-child(1) {
@@ -190,5 +195,11 @@
 			transform: translateX(-10px) rotate(360deg);
 			opacity: 0;
 		}
+	}
+	.container-spin {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 20rem;
 	}
 }

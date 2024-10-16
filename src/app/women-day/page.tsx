@@ -9,6 +9,11 @@ import 'swiper/css';
 import Banner from '@/components/WomenDay/banner';
 import ProductList from '@/components/WomenDay/product';
 import AppleList from '@/components/WomenDay/apple';
+import Promotion from '@/components/WomenDay/promotion';
+import Rules from '@/components/WomenDay/rules';
+import ProductPercent from '@/components/WomenDay/99percent';
+import AndroidList from '@/components/WomenDay/android';
+import LaptopList from '@/components/WomenDay/laptop';
 
 const categories = [
 	{ id: 'item-iphone', name: 'iPhone' },
@@ -24,12 +29,23 @@ const WomenDay = () => {
 	const [activeCategory, setActiveCategory] = useState<string | null>(null);
 	const scrollThreshold = 500;
 
-	const handleClick = (id: string) => {
+	const handleClick = (id: string, offset = 0) => {
 		const element = document.getElementById(id);
 		if (element) {
-			element.scrollIntoView({ behavior: 'smooth' });
+			const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+			const offsetPosition = elementPosition - offset;
+
+			window.scrollTo({
+				top: offsetPosition,
+				behavior: 'smooth',
+			});
 			setActiveCategory(id);
 		}
+	};
+
+	const handleScrollToRules = () => {
+		const customOffset = 300;
+		handleClick('item-rules', customOffset);
 	};
 
 	useEffect(() => {
@@ -73,13 +89,27 @@ const WomenDay = () => {
 	}, []);
 	return (
 		<div className='women-day'>
-			<Image src={BgWomen} alt='bg-women' className='bg-women' />
-			<Banner />
+			{/* <Image src={BgWomen} alt='bg-women' className='bg-women' /> */}
+			<Banner onScrollToRules={handleScrollToRules} />
+			<Promotion onScrollToRules={handleScrollToRules} />
 			<div id='item-iphone'>
 				<ProductList />
 			</div>
 			<div id='item-ipad'>
 				<AppleList />
+			</div>
+			<div id='item-percent'>
+				<ProductPercent />
+			</div>
+			<div id='item-android'>
+				<AndroidList />
+			</div>
+			<div id='item-laptop'>
+				<LaptopList />
+			</div>
+
+			<div id='item-rules'>
+				<Rules />
 			</div>
 
 			<div className='rose' />

@@ -23,6 +23,8 @@ const categories = [
 	{ id: 'item-airpods', name: 'Likenew 99%' },
 	{ id: 'item-mac', name: 'Android' },
 	{ id: 'item-watch', name: 'Laptop' },
+	{ id: 'item-toy', name: 'Đồ chơi công nghệ' },
+	{ id: 'item-accessories', name: 'Phụ kiện giảm sốc' },
 ];
 
 const WomenDay = () => {
@@ -150,7 +152,7 @@ const WomenDay = () => {
 							300: {
 								slidesPerView: 2.5,
 							},
-							1400: {
+							850: {
 								slidesPerView: 5,
 							},
 						}}

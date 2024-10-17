@@ -242,105 +242,101 @@ const AccessWomen: React.FC = () => {
 
 	return (
 		<div className='upgrade-list'>
-			<div className='container'>
-				<div className='upgrade'>
-					{visibleProducts.map((product, index) => (
-						<Link
-							key={index}
-							href={`https://bachlongmobile.com/products/${product.url_key}`}
-							passHref
-							target='_blank'
-							rel='noopener noreferrer'
-							style={{ textDecoration: 'none', color: 'black' }}
-						>
-							<div className='upgrade-item'>
-								<div className='upgrade-item-header'>
+			<div className='upgrade'>
+				{visibleProducts.map((product, index) => (
+					<Link
+						key={index}
+						href={`https://bachlongmobile.com/products/${product.url_key}`}
+						passHref
+						target='_blank'
+						rel='noopener noreferrer'
+						style={{ textDecoration: 'none', color: 'black' }}
+					>
+						<div className='upgrade-item'>
+							<div className='upgrade-item-header'>
+								<Image
+									src={DecorProduct}
+									width={80}
+									height={80}
+									quality={100}
+									alt='decor-product'
+									className='decor-product'
+								/>
+								<span></span>
+								<span className='percent'>Trả góp 0%</span>
+							</div>
+							<div className='upgrade-item-img'>
+								<div className='img-content'>
 									<Image
-										src={DecorProduct}
-										width={80}
-										height={80}
+										src={product.image.url}
+										width={1400}
+										height={1200}
 										quality={100}
-										alt='decor-product'
-										className='decor-product'
+										alt={`product-${index}`}
 									/>
-									<span></span>
-									<span className='percent'>Trả góp 0%</span>
 								</div>
-								<div className='upgrade-item-img'>
-									<div className='img-content'>
-										<Image
-											src={product.image.url}
-											width={1400}
-											height={1200}
-											quality={100}
-											alt={`product-${index}`}
-										/>
-									</div>
-									<div className='frame-product'>
-										<Image
-											src={FrameProduct}
-											width={500}
-											height={500}
-											quality={100}
-											alt='frame-product'
-										/>
-									</div>
+								<div className='frame-product'>
+									<Image
+										src={FrameProduct}
+										width={500}
+										height={500}
+										quality={100}
+										alt='frame-product'
+									/>
 								</div>
-								<div className='upgrade-item-content'>
-									<h4 className='upgrade-item-content-tt'>{product.name}</h4>
-									<div className='upgrade-item-content-body'>
-										<div className='upgrade-item-content-body-price'>
-											{product.price_range.minimum_price.final_price.value.toLocaleString(
-												'vi-VN'
-											)}{' '}
-											{product.price_range.minimum_price.final_price.currency}
+							</div>
+							<div className='upgrade-item-content'>
+								<h4 className='upgrade-item-content-tt'>{product.name}</h4>
+								<div className='upgrade-item-content-body'>
+									<div className='upgrade-item-content-body-price'>
+										{product.price_range.minimum_price.final_price.value.toLocaleString('vi-VN')}{' '}
+										{product.price_range.minimum_price.final_price.currency}
+									</div>
+									<div className='upgrade-item-content-body-reduced'>
+										<div className='price-reduced'>
+											{product.attributes && product.attributes[0]?.value
+												? Number(product.attributes[0].value).toLocaleString('vi-VN')
+												: ''}{' '}
+											{product.attributes[0].value &&
+												product.price_range.minimum_price.final_price.currency}
 										</div>
-										<div className='upgrade-item-content-body-reduced'>
-											<div className='price-reduced'>
-												{product.attributes && product.attributes[0]?.value
-													? Number(product.attributes[0].value).toLocaleString('vi-VN')
-													: ''}{' '}
-												{product.attributes[0].value &&
-													product.price_range.minimum_price.final_price.currency}
-											</div>
 
-											{product.attributes[0].value && (
-												<div className='percent'>
-													-
-													{Math.ceil(
-														((product.attributes[0].value -
-															product.price_range.minimum_price.final_price.value) /
-															product.attributes[0].value) *
-															100
-													)}
-													%
-												</div>
-											)}
-										</div>
+										{product.attributes[0].value && (
+											<div className='percent'>
+												-
+												{Math.ceil(
+													((product.attributes[0].value -
+														product.price_range.minimum_price.final_price.value) /
+														product.attributes[0].value) *
+														100
+												)}
+												%
+											</div>
+										)}
 									</div>
 								</div>
 							</div>
-						</Link>
-					))}
-				</div>
-				{visibleCount < filteredData.length && (
-					<div style={{ textAlign: 'center', marginTop: '20px' }}>
-						<button
-							onClick={loadMore}
-							style={{
-								backgroundColor: '#ef373e',
-								color: 'white',
-								border: 'none',
-								padding: '10px 20px',
-								borderRadius: '5px',
-								cursor: 'pointer',
-							}}
-						>
-							Xem thêm
-						</button>
-					</div>
-				)}
+						</div>
+					</Link>
+				))}
 			</div>
+			{visibleCount < filteredData.length && (
+				<div style={{ textAlign: 'center', marginTop: '20px' }}>
+					<button
+						onClick={loadMore}
+						style={{
+							backgroundColor: '#ef373e',
+							color: 'white',
+							border: 'none',
+							padding: '10px 20px',
+							borderRadius: '5px',
+							cursor: 'pointer',
+						}}
+					>
+						Xem thêm
+					</button>
+				</div>
+			)}
 		</div>
 	);
 };

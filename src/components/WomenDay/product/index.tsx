@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 import './product.scss';
 import DecorWomen from '../../../../public/women-day/decor-women-01.png';
 import AccessWomen from '@/components/WomenDay/accessories20_10/acess-women';
@@ -12,51 +14,79 @@ import Access290 from '@/components/WomenDay/accessories20_10/acess-290';
 import AccessTo210 from '@/components/WomenDay/accessories20_10/acess-to210';
 
 const ProductList: React.FC = () => {
-	const [activeTab, setActiveTab] = useState<string>('iPhone 16');
-	const [visibleCount, setVisibleCount] = useState<number>(10);
+	const [activeTab, setActiveTab] = useState<number>(0);
+	const [isMobile, setIsMobile] = useState<boolean>(false);
 
 	const tabs = [
+		{ index: 0, name: 'PHỤ KIỆN PHÁI NỮ', component: <AccessWomen /> },
 		{
-			name: 'PHỤ KIỆN PHÁI NỮ',
-			component: <AccessWomen />,
-		},
-		{
-			name: 'IPHONE TỪ 10K',
+			index: 1,
+			name: (
+				<span>
+					IPHONE <br /> GIÁ TỪ 10K
+				</span>
+			),
 			component: <Access10k />,
 		},
 		{
-			name: 'SAMSUNG GIÁ TỪ 20K',
+			index: 2,
+			name: (
+				<span>
+					SAMSUNG <br /> GIÁ TỪ 20K
+				</span>
+			),
 			component: <Access20k />,
 		},
 		{
-			name: 'Pin dự phòng GIÁ TỪ  210.000',
+			index: 3,
+			name: (
+				<span>
+					Pin dự phòng <br /> GIÁ TỪ 210.000
+				</span>
+			),
 			component: <AccessTo210 />,
 		},
 		{
-			name: 'IPHONE 13 series ĐỒNG GIÁ 110,000',
+			index: 4,
+			name: (
+				<span>
+					IPHONE 13 series <br /> ĐỒNG GIÁ 110,000
+				</span>
+			),
 			component: <Access110 />,
 		},
 		{
-			name: 'IPHONE 14 series ĐỒNG GIÁ 210,000',
+			index: 5,
+			name: (
+				<span>
+					IPHONE 14 series <br /> ĐỒNG GIÁ 210,000
+				</span>
+			),
 			component: <Access210 />,
 		},
 		{
-			name: 'CÓC /CÁP SẠC  ĐỒNG GIÁ 290.000',
+			index: 6,
+			name: (
+				<span>
+					CÓC /CÁP SẠC <br /> ĐỒNG GIÁ 290.000
+				</span>
+			),
 			component: <Access290 />,
 		},
 		{
-			name: 'IPHONE 15 series ĐỒNG GIÁ 310,000',
+			index: 7,
+			name: (
+				<span>
+					IPHONE 15 series <br /> ĐỒNG GIÁ 310,000
+				</span>
+			),
 			component: <Access310 />,
 		},
 	];
 
 	useEffect(() => {
 		const handleResize = () => {
-			if (window.innerWidth < 768) {
-				setVisibleCount(4);
-			} else {
-				setVisibleCount(10);
-			}
+			setIsMobile(window.innerWidth < 768);
 		};
 
 		handleResize();
@@ -66,10 +96,6 @@ const ProductList: React.FC = () => {
 			window.removeEventListener('resize', handleResize);
 		};
 	}, []);
-
-	const loadMore = () => {
-		setVisibleCount((prevCount) => prevCount + 5);
-	};
 
 	return (
 		<div className='product-list' id='item-iphone'>
@@ -86,32 +112,60 @@ const ProductList: React.FC = () => {
 							sizes='(max-width: 768px) 100vw, (min-width: 768px) 50vw, (min-width: 1200px) 33vw'
 						/>
 					</div>
-					<div className='tabs-grid'>
-						{tabs.map((tab) => (
-							<div key={tab.name}>
-								<button
-									onClick={() => {
-										setActiveTab(tab.name);
-									}}
-									className={activeTab === tab.name ? 'tab active' : 'tab'}
-									style={{
-										color: activeTab === tab.name ? '#fff' : '#333',
-										backgroundColor: activeTab === tab.name ? '#ff4d4f' : '#fff',
-										border: activeTab === tab.name ? '2px solid #ff4d4f' : '2px solid #eee',
-										margin: '8px',
-										borderRadius: '8px',
-										cursor: 'pointer',
-										transition: 'all 0.3s ease',
-										boxShadow: activeTab === tab.name ? '0 4px 8px rgba(0, 0, 0, 0.1)' : 'none',
-									}}
-								>
-									{tab.name}
-								</button>
-							</div>
-						))}
-					</div>
 
-					<div>{tabs.find((tab) => tab.name === activeTab)?.component}</div>
+					{isMobile ? (
+						<Swiper spaceBetween={10} slidesPerView={2.8}>
+							{tabs.map((tab) => (
+								<SwiperSlide key={tab.index} style={{ padding: '1.2rem 0' }}>
+									<button
+										onClick={() => setActiveTab(tab.index)}
+										className={activeTab === tab.index ? 'tab active' : 'tab'}
+										style={{
+											width: '100%',
+											color: activeTab === tab.index ? '#fff' : '#333',
+											backgroundColor: activeTab === tab.index ? '#ff4d4f' : '#fff',
+											border: activeTab === tab.index ? '2px solid #ff4d4f' : '2px solid #eee',
+											borderRadius: '8px',
+											cursor: 'pointer',
+											transition: 'all 0.3s ease',
+											boxShadow:
+												activeTab === tab.index ? '0 4px 8px rgba(0, 0, 0, 0.1)' : 'none',
+											fontSize: '1.2rem',
+											minHeight: '4rem',
+										}}
+									>
+										{tab.name}
+									</button>
+								</SwiperSlide>
+							))}
+						</Swiper>
+					) : (
+						<div className='tabs-grid'>
+							{tabs.map((tab) => (
+								<div key={tab.index}>
+									<button
+										onClick={() => setActiveTab(tab.index)}
+										className={activeTab === tab.index ? 'tab active' : 'tab'}
+										style={{
+											width: '100%',
+											color: activeTab === tab.index ? '#fff' : '#333',
+											backgroundColor: activeTab === tab.index ? '#ff4d4f' : '#fff',
+											border: activeTab === tab.index ? '2px solid #ff4d4f' : '2px solid #eee',
+											borderRadius: '8px',
+											cursor: 'pointer',
+											transition: 'all 0.3s ease',
+											boxShadow:
+												activeTab === tab.index ? '0 4px 8px rgba(0, 0, 0, 0.1)' : 'none',
+										}}
+									>
+										{tab.name}
+									</button>
+								</div>
+							))}
+						</div>
+					)}
+
+					<div>{tabs[activeTab]?.component}</div>
 				</div>
 			</div>
 		</div>

@@ -350,13 +350,15 @@ const AndroidList: React.FC = () => {
 										<span className='percent'>Trả góp 0%</span>
 									</div>
 									<div className='upgrade-item-img'>
-										<Image
-											src={product.image.url}
-											width={1400}
-											height={1200}
-											quality={100}
-											alt={`product-${index}`}
-										/>
+										<div className='img-content'>
+											<Image
+												src={product.image.url}
+												width={1400}
+												height={1200}
+												quality={100}
+												alt={`product-${index}`}
+											/>
+										</div>
 										<div className='frame-product'>
 											<Image
 												src={FrameProduct}

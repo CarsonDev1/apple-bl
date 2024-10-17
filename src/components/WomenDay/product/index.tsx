@@ -17,35 +17,35 @@ const ProductList: React.FC = () => {
 
 	const tabs = [
 		{
-			name: 'Phụ kiện phái nữ',
+			name: 'PHỤ KIỆN PHÁI NỮ',
 			component: <AccessWomen />,
 		},
 		{
-			name: 'PHỤ KIỆN IPHONE TỪ 10K',
+			name: 'IPHONE TỪ 10K',
 			component: <Access10k />,
 		},
 		{
-			name: 'PHỤ KIỆN SAMSUNG GIÁ TỪ 20K',
+			name: 'SAMSUNG GIÁ TỪ 20K',
 			component: <Access20k />,
 		},
 		{
-			name: 'PHỤ KIỆN Pin dự phòng GIÁ TỪ  210.000',
+			name: 'Pin dự phòng GIÁ TỪ  210.000',
 			component: <AccessTo210 />,
 		},
 		{
-			name: 'PHỤ KIỆN IPHONE 13 series ĐỒNG GIÁ 110,000',
+			name: 'IPHONE 13 series ĐỒNG GIÁ 110,000',
 			component: <Access110 />,
 		},
 		{
-			name: 'PHỤ KIỆN IPHONE 14 series ĐỒNG GIÁ 210,000',
+			name: 'IPHONE 14 series ĐỒNG GIÁ 210,000',
 			component: <Access210 />,
 		},
 		{
-			name: 'PHỤ KIỆN CÓC /CÁP SẠC  ĐỒNG GIÁ 290.000',
+			name: 'CÓC /CÁP SẠC  ĐỒNG GIÁ 290.000',
 			component: <Access290 />,
 		},
 		{
-			name: 'PHỤ KIỆN IPHONE 15 series ĐỒNG GIÁ 310,000',
+			name: 'IPHONE 15 series ĐỒNG GIÁ 310,000',
 			component: <Access310 />,
 		},
 	];

@@ -100,22 +100,16 @@ const AppleList: React.FC = () => {
 		staleTime: 300000,
 	});
 
-	const [activeTab, setActiveTab] = useState<string>('iPhone 16 Plus');
+	const [activeTab, setActiveTab] = useState<string>('iPhone');
 	const [filteredData, setFilteredData] = useState<Product[]>([]);
 	const [visibleCount, setVisibleCount] = useState<number>(10);
 
 	const tabs = [
 		{
-			name: 'iPhone 16 Plus',
-		},
-		{
-			name: 'iPhone 16',
+			name: 'iPhone',
 		},
 		{
 			name: 'iPad',
-		},
-		{
-			name: 'Phụ Kiện',
 		},
 	];
 

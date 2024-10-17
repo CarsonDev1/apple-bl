@@ -48,7 +48,7 @@ const WomenDay = () => {
 	};
 
 	const handleScrollToRules = () => {
-		const customOffset = 300;
+		const customOffset = 1000;
 		handleClick('item-rules', customOffset);
 	};
 

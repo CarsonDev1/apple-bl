@@ -67,6 +67,7 @@
 		z-index: 2;
 		border-radius: 0.6rem;
 		box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
 		.category-name {
 			color: #000;
 			font-size: 1.2rem;
@@ -87,10 +88,12 @@
 				background-repeat: no-repeat;
 				z-index: 1;
 				border-radius: 0.6rem;
+				opacity: 1;
 			}
 		}
 		&.default {
 			background-color: white;
+			opacity: 0.5;
 		}
 	}
 

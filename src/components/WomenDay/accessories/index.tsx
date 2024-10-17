@@ -5,9 +5,8 @@ import Link from 'next/link';
 import { Spin } from 'antd';
 import './product.scss';
 import DecorProduct from '../../../../public/women-day/decor-product.png';
-import DecorWomen from '../../../../public/women-day/decor-women-01.png';
+import DecorWomen from '../../../../public/women-day/decor-women-07.png';
 import FrameProduct from '../../../../public/women-day/frame-product.png';
-import Gift from '../../../../public/old/gift.png';
 
 export interface Product {
 	id: number;
@@ -170,7 +169,7 @@ fragment ProductPriceField on ProductPrice {
 const variables = {
 	filter: {
 		category_uid: {
-			eq: 'MTk4',
+			eq: 'MzQ4',
 		},
 	},
 	pageSize: 200,
@@ -193,58 +192,55 @@ async function fetchProductListData() {
 	return data.data.products.items as Product[];
 }
 
-const ProductList: React.FC = () => {
+const AccessoriesList: React.FC = () => {
 	const { data, error, isLoading } = useQuery<Product[]>({
-		queryKey: ['productListData'],
+		queryKey: ['accessoriesData'],
 		queryFn: fetchProductListData,
 		staleTime: 300000,
 	});
 
-	const [activeTab, setActiveTab] = useState<string>('iPhone 16');
+	const [activeTab, setActiveTab] = useState<string>('Cường lực');
 	const [activeSubTab, setActiveSubTab] = useState<string>('');
 	const [filteredData, setFilteredData] = useState<Product[]>([]);
 	const [visibleCount, setVisibleCount] = useState<number>(10);
 
 	const tabs = [
 		{
-			name: 'iPhone 16',
-			subTabs: ['iPhone 16 Pro Max', 'iPhone 16 Pro', 'iPhone 16 Plus', 'iPhone 16'],
+			name: 'Cường lực',
 		},
 		{
-			name: 'iPhone 15',
-			subTabs: ['iPhone 15 Pro Max', 'iPhone 15 Pro', 'iPhone 15 Plus', 'iPhone 15'],
+			name: 'Ốp lưng',
 		},
 		{
-			name: 'iPhone 14',
-			subTabs: ['iPhone 14 Pro Max', 'iPhone 14 Pro', 'iPhone 14 Plus', 'iPhone 14'],
+			name: 'Loa',
 		},
 		{
-			name: 'iPhone 13',
-			subTabs: [],
-		},
-		{
-			name: 'iPhone 11',
-			subTabs: [],
+			name: 'Sạc dự phòng',
 		},
 	];
 
 	useEffect(() => {
 		const filtered = data?.filter((product) => {
-			const matchesTab =
-				(activeTab === 'iPhone 16' && activeSubTab === 'iPhone 16') ||
-				(activeTab === 'iPhone 15' && activeSubTab === 'iPhone 15') ||
-				(activeTab === 'iPhone 14' && activeSubTab === 'iPhone 14')
-					? product.name.includes(activeTab) &&
-					  !product.name.includes('Pro') &&
-					  !product.name.includes('Plus')
-					: product.name.includes(activeTab);
+			const lowerActiveTab = activeTab.toLowerCase();
+			const lowerProductName = product.name.toLowerCase();
 
+			const matchesTab =
+				(lowerActiveTab === 'cường lực' && activeSubTab === 'Cường lực') ||
+				(lowerActiveTab === 'ốp lưng' && activeSubTab === 'Ốp lưng') ||
+				(lowerActiveTab === 'loa' && activeSubTab === 'Loa') ||
+				(lowerActiveTab === 'sạc dự phòng' && activeSubTab === 'Sạc dự phòng')
+					? lowerProductName.includes(lowerActiveTab) &&
+					  !lowerProductName.includes('pro') &&
+					  !lowerProductName.includes('plus')
+					: lowerProductName.includes(lowerActiveTab);
+
+			const lowerActiveSubTab = activeSubTab.toLowerCase();
 			const matchesSubTab = activeSubTab
-				? activeSubTab.includes('Pro Max')
-					? product.name.includes('Pro Max')
-					: activeSubTab.includes('Pro')
-					? product.name.includes('Pro') && !product.name.includes('Pro Max')
-					: product.name.includes(activeSubTab)
+				? lowerActiveSubTab.includes('pro max')
+					? lowerProductName.includes('pro max')
+					: lowerActiveSubTab.includes('pro')
+					? lowerProductName.includes('pro') && !lowerProductName.includes('pro max')
+					: lowerProductName.includes(lowerActiveSubTab)
 				: true;
 
 			return matchesTab && matchesSubTab;
@@ -286,18 +282,11 @@ const ProductList: React.FC = () => {
 	};
 
 	return (
-		<div className='product-list' id='item-iphone'>
+		<div className='product-list' id='item-mac'>
 			<div className='upgrade-list'>
 				<div className='container'>
 					<div className='women-decor'>
-						<Image
-							src={DecorWomen}
-							width={1920}
-							height={1200}
-							alt='product-banner-01'
-							className=''
-							quality={100}
-						/>
+						<Image src={DecorWomen} width={1920} height={1200} alt='product-banner-01' className='' />
 					</div>
 					<div className='tabs'>
 						{tabs.map((tab) => (
@@ -305,17 +294,18 @@ const ProductList: React.FC = () => {
 								<button
 									onClick={() => {
 										setActiveTab(tab.name);
-										setActiveSubTab('');
 									}}
 									className={activeTab === tab.name ? 'tab active' : 'tab'}
 									style={{
-										color: activeTab === tab.name ? 'white' : '#000',
-										backgroundColor: activeTab === tab.name ? '#ef373e' : '#f1f1f1',
-										border: activeTab === tab.name ? '1px solid #ef373e' : '1px solid #ccc',
-										padding: '10px 20px',
-										margin: '5px',
-										borderRadius: '5px',
+										color: activeTab === tab.name ? '#fff' : '#333',
+										backgroundColor: activeTab === tab.name ? '#ff4d4f' : '#fff',
+										border: activeTab === tab.name ? '2px solid #ff4d4f' : '2px solid #eee',
+										padding: '12px 24px',
+										margin: '8px',
+										borderRadius: '8px',
 										cursor: 'pointer',
+										transition: 'all 0.3s ease',
+										boxShadow: activeTab === tab.name ? '0 4px 8px rgba(0, 0, 0, 0.1)' : 'none',
 									}}
 								>
 									{tab.name}
@@ -448,4 +438,4 @@ const ProductList: React.FC = () => {
 	);
 };
 
-export default ProductList;
+export default AccessoriesList;

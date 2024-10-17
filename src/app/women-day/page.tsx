@@ -14,6 +14,8 @@ import Rules from '@/components/WomenDay/rules';
 import ProductPercent from '@/components/WomenDay/99percent';
 import AndroidList from '@/components/WomenDay/android';
 import LaptopList from '@/components/WomenDay/laptop';
+import ToyList from '@/components/WomenDay/toy';
+import AccessoriesList from '@/components/WomenDay/accessories';
 
 const categories = [
 	{ id: 'item-iphone', name: 'Phụ kiện tặng nàng' },
@@ -106,6 +108,12 @@ const WomenDay = () => {
 			</div>
 			<div id='item-watch'>
 				<LaptopList />
+			</div>
+			<div id='item-toy'>
+				<ToyList />
+			</div>
+			<div id='item-accessories'>
+				<AccessoriesList />
 			</div>
 
 			<div id='item-rules'>

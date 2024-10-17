@@ -21,14 +21,10 @@
 	.upgrade-list {
 		.women-decor {
 			position: relative;
-			width: 80%;
-			height: 100%;
-			margin-left: auto;
-			margin-right: auto;
 			img {
 				width: 100%;
-				object-fit: contain;
-				height: auto;
+				height: 100%;
+				object-fit: cover;
 			}
 			.women-text {
 				position: absolute;
@@ -57,14 +53,19 @@
 			display: grid;
 			grid-template-columns: repeat(5, 1fr);
 			gap: 1.2rem;
+			margin-top: 3.2rem;
+
 			@media screen and (max-width: '1200px') {
 				grid-template-columns: repeat(4, 1fr);
+				margin-top: 2.4rem;
 			}
 			@media screen and (max-width: '850px') {
 				grid-template-columns: repeat(3, 1fr);
+				margin-top: 1.6rem;
 			}
 			@media screen and (max-width: '768px') {
 				grid-template-columns: repeat(2, 1fr);
+				margin-top: 1.2rem;
 			}
 
 			&-item {

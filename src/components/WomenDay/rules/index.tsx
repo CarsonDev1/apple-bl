@@ -11,10 +11,10 @@ const Rules = () => {
 						className='rules-section-title'
 						style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
 					>
-						<span>Tháng Yêu Thương – Trao Hạnh Phúc</span> <span>Muôn Ngàn Quà Tặng.</span>
+						<span>NGÀY CỦA NÀNG</span> <span>Siêu Sale Ngày Đẹp – Giá Rẻ Gấp Đôi</span>
 					</p>
 					<p className='rules-description'>
-						Thời gian: <span className='rules-section-title-hot'>06/10 - 31/10/2024</span> tại hệ thống Bạch
+						Thời gian: <span className='rules-section-title-hot'>18/10 - 20/10/2024</span> tại hệ thống Bạch
 						Long Mobile.
 					</p>
 				</div>
@@ -22,10 +22,7 @@ const Rules = () => {
 				<div className='rules-content'>
 					<h2 className='rules-section-title'>I/ THÁNG YÊU THƯƠNG – MÁY TRAO TAY NHẬN QUÀ NGAY</h2>
 					<ul className='rules-list'>
-						<li>
-							Giảm Thêm 500.000 cho khách hàng là Phụ nữ có sinh nhật trong{' '}
-							<span>tháng 🔟</span> này
-						</li>
+						<li>Giảm Thêm 500.000 cho khách hàng Nữ có sinh nhật trong tháng 🔟 này*</li>
 						<li>Giảm giá tất cả các sản phẩm Apple MỚI - CŨ lên đến 50%</li>
 						<li>Hoàn 100% chi phí di chuyển cho khách hàng trong nội thành TP.HCM (tối đa 300.000Đ)</li>
 						<li>Bạch Long chơi lớn với vòng quay may mắn vật lý:</li>
@@ -52,6 +49,7 @@ const Rules = () => {
 								<span className='rules-section-title-hot'>02/11/2024</span> tại Bạch Long Mobile,{' '}
 								<span className='rules-section-title-hot'>251 - 253 Trần Hưng Đạo.</span>
 							</li>
+							<span className=''>*Khuyến mãi được áp dụng cho tuỳ thiết bị</span>
 						</ul>
 					</ul>
 
@@ -59,28 +57,24 @@ const Rules = () => {
 						II/ SALE TƯNG BỪNG, MỪNG PHÁI ĐẸP – NGÀNH HÀNG APPLE GIẢM ĐẾN 50%
 					</h2>
 					<ul className='rules-list'>
-						<li>
-							Giảm đến 30% cho các sản phẩm Apple MỚI và lì xì lên đến{' '}
-							<span className='rules-section-title-hot'>300.000đ.</span>
-						</li>
+						<li>Giảm đến 50% cho các sản phẩm Apple iPhone</li>
+						<li>Giảm đến 30% cho các thiết bị Likenew</li>
+						<li>Giảm đến 1,5 Triệu cho các thiết bị Android</li>
+						<li>Giảm đến 2 Triệu cho Macbook và Laptop</li>
+						<li>Phụ kiện tặng nàng chỉ từ 10K</li>
 						<ul>
 							<li>
-								Giảm đến 50% cho iPhone Likenew và lì xì lên đến{' '}
-								<span className='rules-section-title-hot'>300.000đ.</span>
-							</li>
-						</ul>
-						<ul>
-							<li>
-								Phụ kiện Apple giảm đến <span className='rules-section-title-hot'>50%</span>
+								Phụ kiện Apple giảm đến <span className='rules-section-title-hot'>60%:</span>
 							</li>
 							<ul className='rules-sublist'>
 								<li>
-									Mua 1 tặng 1: Khi mua cường lực màn hình, ốp lưng,… sẽ được tặng 1 Camera Lens trị
-									giá{' '}
+									Mua 1 tặng 1: Khi mua cường lực màn hình, ốp lưng,… sẽ được tặng 1 Camera Lens trị
+									giá 350.000đ
 								</li>
 								<ul>
 									<li>
-										Combo phụ kiện giảm đến <span className='rules-section-title-hot'>60%</span>
+										Combo phụ kiện chính hãng giảm đến 
+										<span className='rules-section-title-hot'>50%:</span>
 									</li>
 									<ul className='rules-sublist'>
 										<li className='li-cus'>

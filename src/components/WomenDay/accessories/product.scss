@@ -21,14 +21,10 @@
 	.upgrade-list {
 		.women-decor {
 			position: relative;
-			width: 80%;
-			height: 100%;
-			margin-left: auto;
-			margin-right: auto;
 			img {
 				width: 100%;
-				object-fit: contain;
-				height: auto;
+				height: 100%;
+				object-fit: cover;
 			}
 			.women-text {
 				position: absolute;

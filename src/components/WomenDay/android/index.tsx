@@ -215,25 +215,11 @@ const AndroidList: React.FC = () => {
 
 	useEffect(() => {
 		const filtered = data?.filter((product) => {
-			const matchesTab =
-				(activeTab === 'iPhone 16' && activeSubTab === 'iPhone 16') ||
-				(activeTab === 'iPhone 15' && activeSubTab === 'iPhone 15') ||
-				(activeTab === 'iPhone 14' && activeSubTab === 'iPhone 14')
-					? product.name.includes(activeTab) &&
-					  !product.name.includes('Pro') &&
-					  !product.name.includes('Plus')
-					: product.name.includes(activeTab);
+			const matchesTab = product.name.toLowerCase().includes(activeTab.toLowerCase());
 
-			const matchesSubTab = activeSubTab
-				? activeSubTab.includes('Pro Max')
-					? product.name.includes('Pro Max')
-					: activeSubTab.includes('Pro')
-					? product.name.includes('Pro') && !product.name.includes('Pro Max')
-					: product.name.includes(activeSubTab)
-				: true;
-
-			return matchesTab && matchesSubTab;
+			return matchesTab;
 		});
+
 		setFilteredData(filtered || []);
 
 		const handleResize = () => {
@@ -250,7 +236,7 @@ const AndroidList: React.FC = () => {
 		return () => {
 			window.removeEventListener('resize', handleResize);
 		};
-	}, [data, activeTab, activeSubTab]);
+	}, [data, activeTab]);
 
 	if (isLoading) {
 		return (

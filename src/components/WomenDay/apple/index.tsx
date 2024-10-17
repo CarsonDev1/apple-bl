@@ -90,7 +90,8 @@ async function fetchProductListData() {
 	});
 
 	const data = await response.json();
-	return data.data.products.items as Product[];
+	// return data.data.products.items as Product[];
+	return data;
 }
 
 const AppleList: React.FC = () => {
@@ -113,46 +114,46 @@ const AppleList: React.FC = () => {
 		},
 	];
 
-	useEffect(() => {
-		let filtered = data || [];
+	// useEffect(() => {
+	// 	let filtered = data || [];
 
-		if (activeTab === 'Phụ Kiện') {
-			filtered =
-				data?.filter((product) => {
-					const hasAccessoryAttribute = product.attributes.some((attr: any) => attr.value === 'Phụ Kiện');
-					return product.name.includes('Phụ Kiện') || hasAccessoryAttribute;
-				}) || [];
-		} else {
-			filtered =
-				data?.filter((product) => {
-					const matchesTab =
-						activeTab === 'iPhone 16'
-							? product.name.startsWith('iPhone 16') &&
-							  !product.name.includes('Plus') &&
-							  !product.name.includes('Pro')
-							: product.name.includes(activeTab);
+	// 	if (activeTab === 'Phụ Kiện') {
+	// 		filtered =
+	// 			data?.filter((product) => {
+	// 				const hasAccessoryAttribute = product.attributes.some((attr: any) => attr.value === 'Phụ Kiện');
+	// 				return product.name.includes('Phụ Kiện') || hasAccessoryAttribute;
+	// 			}) || [];
+	// 	} else {
+	// 		filtered =
+	// 			data?.filter((product) => {
+	// 				const matchesTab =
+	// 					activeTab === 'iPhone 16'
+	// 						? product.name.startsWith('iPhone 16') &&
+	// 						  !product.name.includes('Plus') &&
+	// 						  !product.name.includes('Pro')
+	// 						: product.name.includes(activeTab);
 
-					return matchesTab;
-				}) || [];
-		}
+	// 				return matchesTab;
+	// 			}) || [];
+	// 	}
 
-		setFilteredData(filtered);
+	// 	setFilteredData(filtered);
 
-		const handleResize = () => {
-			if (window.innerWidth < 768) {
-				setVisibleCount(4);
-			} else {
-				setVisibleCount(10);
-			}
-		};
+	// 	const handleResize = () => {
+	// 		if (window.innerWidth < 768) {
+	// 			setVisibleCount(4);
+	// 		} else {
+	// 			setVisibleCount(10);
+	// 		}
+	// 	};
 
-		handleResize();
-		window.addEventListener('resize', handleResize);
+	// 	handleResize();
+	// 	window.addEventListener('resize', handleResize);
 
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
-	}, [data, activeTab]);
+	// 	return () => {
+	// 		window.removeEventListener('resize', handleResize);
+	// 	};
+	// }, [data, activeTab]);
 
 	if (isLoading) {
 		return (
@@ -175,7 +176,7 @@ const AppleList: React.FC = () => {
 	return (
 		<div className='product-list' id='item-ipad'>
 			<div className='upgrade-list'>
-				<div className='container'>
+				{/* <div className='container'>
 					<div className='women-decor'>
 						<Image src={DecorWomen} width={1920} height={1200} alt='product-banner-01' className='' />
 					</div>
@@ -226,7 +227,6 @@ const AppleList: React.FC = () => {
 											className='decor-product'
 										/>
 										<span></span>
-										{/* Only show "Trả góp 0%" if the product price is greater than 3,000,000 */}
 										{product.price_range.minimum_price.final_price.value > 3000000 && (
 											<span className='percent'>Trả góp 0%</span>
 										)}
@@ -305,7 +305,7 @@ const AppleList: React.FC = () => {
 							</button>
 						</div>
 					)}
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);

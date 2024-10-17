@@ -49,49 +49,49 @@ const ProductList: React.FC = () => {
 			index: 3,
 			name: (
 				<span>
+					IPHONE 13 SERIES <br />{' '}
+					<span style={{ fontSize: '1.2rem', fontWeight: '600' }}>GIÁ TỪ 110,000</span>
+				</span>
+			),
+			component: <Access110 />,
+		},
+		{
+			index: 4,
+			name: (
+				<span>
+					IPHONE 14 SERIES <br />{' '}
+					<span style={{ fontSize: '1.2rem', fontWeight: '600' }}>GIÁ TỪ 210,000</span>
+				</span>
+			),
+			component: <Access210 />,
+		},
+		{
+			index: 5,
+			name: (
+				<span>
+					IPHONE 15 SERIES <br />{' '}
+					<span style={{ fontSize: '1.2rem', fontWeight: '600' }}>GIÁ TỪ 310,000</span>
+				</span>
+			),
+			component: <Access310 />,
+		},
+		{
+			index: 6,
+			name: (
+				<span>
 					PIN DỰ PHÒNG <br /> <span style={{ fontSize: '1.2rem', fontWeight: '600' }}>GIÁ TỪ 210.000</span>
 				</span>
 			),
 			component: <AccessTo210 />,
 		},
 		{
-			index: 4,
-			name: (
-				<span>
-					IPHONE 13 SERIES <br />{' '}
-					<span style={{ fontSize: '1.2rem', fontWeight: '600' }}>ĐỒNG GIÁ 110,000</span>
-				</span>
-			),
-			component: <Access110 />,
-		},
-		{
-			index: 5,
-			name: (
-				<span>
-					IPHONE 14 SERIES <br />{' '}
-					<span style={{ fontSize: '1.2rem', fontWeight: '600' }}>ĐỒNG GIÁ 210,000</span>
-				</span>
-			),
-			component: <Access210 />,
-		},
-		{
-			index: 6,
-			name: (
-				<span>
-					CÓC /CÁP SẠC <br /> <span style={{ fontSize: '1.2rem', fontWeight: '600' }}>ĐỒNG GIÁ 290.000</span>
-				</span>
-			),
-			component: <Access290 />,
-		},
-		{
 			index: 7,
 			name: (
 				<span>
-					IPHONE 15 SERIES <br />{' '}
-					<span style={{ fontSize: '1.2rem', fontWeight: '600' }}>ĐỒNG GIÁ 310,000</span>
+					CÓC /CÁP SẠC <br /> <span style={{ fontSize: '1.2rem', fontWeight: '600' }}>GIÁ TỪ 290.000</span>
 				</span>
 			),
-			component: <Access310 />,
+			component: <Access290 />,
 		},
 	];
 

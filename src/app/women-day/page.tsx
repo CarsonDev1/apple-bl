@@ -31,7 +31,7 @@ const WomenDay = () => {
 	const categoryRef = useRef(null);
 	const [isStickyVisible, setIsStickyVisible] = useState(false);
 	const [activeCategory, setActiveCategory] = useState<string | null>(null);
-	const scrollThreshold = 500;
+	const scrollThreshold = 1500;
 
 	const handleClick = (id: string, offset = 0) => {
 		const element = document.getElementById(id);

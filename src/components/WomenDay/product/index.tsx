@@ -18,12 +18,20 @@ const ProductList: React.FC = () => {
 	const [isMobile, setIsMobile] = useState<boolean>(false);
 
 	const tabs = [
-		{ index: 0, name: 'PHỤ KIỆN PHÁI NỮ', component: <AccessWomen /> },
+		{
+			index: 0,
+			name: (
+				<p>
+					PHỤ KIỆN <br /> <span style={{ fontSize: '1.2rem', fontWeight: '600' }}>PHÁI NỮ</span>
+				</p>
+			),
+			component: <AccessWomen />,
+		},
 		{
 			index: 1,
 			name: (
 				<span>
-					IPHONE <br /> GIÁ TỪ 10K
+					IPHONE <br /> <span style={{ fontSize: '1.2rem', fontWeight: '600' }}>GIÁ TỪ 10K</span>
 				</span>
 			),
 			component: <Access10k />,
@@ -32,7 +40,7 @@ const ProductList: React.FC = () => {
 			index: 2,
 			name: (
 				<span>
-					SAMSUNG <br /> GIÁ TỪ 20K
+					SAMSUNG <br /> <span style={{ fontSize: '1.2rem', fontWeight: '600' }}>GIÁ TỪ 20K</span>
 				</span>
 			),
 			component: <Access20k />,
@@ -41,7 +49,7 @@ const ProductList: React.FC = () => {
 			index: 3,
 			name: (
 				<span>
-					Pin dự phòng <br /> GIÁ TỪ 210.000
+					PIN DỰ PHÒNG <br /> <span style={{ fontSize: '1.2rem', fontWeight: '600' }}>GIÁ TỪ 210.000</span>
 				</span>
 			),
 			component: <AccessTo210 />,
@@ -50,7 +58,8 @@ const ProductList: React.FC = () => {
 			index: 4,
 			name: (
 				<span>
-					IPHONE 13 series <br /> ĐỒNG GIÁ 110,000
+					IPHONE 13 SERIES <br />{' '}
+					<span style={{ fontSize: '1.2rem', fontWeight: '600' }}>ĐỒNG GIÁ 110,000</span>
 				</span>
 			),
 			component: <Access110 />,
@@ -59,7 +68,8 @@ const ProductList: React.FC = () => {
 			index: 5,
 			name: (
 				<span>
-					IPHONE 14 series <br /> ĐỒNG GIÁ 210,000
+					IPHONE 14 SERIES <br />{' '}
+					<span style={{ fontSize: '1.2rem', fontWeight: '600' }}>ĐỒNG GIÁ 210,000</span>
 				</span>
 			),
 			component: <Access210 />,
@@ -68,7 +78,7 @@ const ProductList: React.FC = () => {
 			index: 6,
 			name: (
 				<span>
-					CÓC /CÁP SẠC <br /> ĐỒNG GIÁ 290.000
+					CÓC /CÁP SẠC <br /> <span style={{ fontSize: '1.2rem', fontWeight: '600' }}>ĐỒNG GIÁ 290.000</span>
 				</span>
 			),
 			component: <Access290 />,
@@ -77,7 +87,8 @@ const ProductList: React.FC = () => {
 			index: 7,
 			name: (
 				<span>
-					IPHONE 15 series <br /> ĐỒNG GIÁ 310,000
+					IPHONE 15 SERIES <br />{' '}
+					<span style={{ fontSize: '1.2rem', fontWeight: '600' }}>ĐỒNG GIÁ 310,000</span>
 				</span>
 			),
 			component: <Access310 />,
@@ -142,7 +153,7 @@ const ProductList: React.FC = () => {
 					) : (
 						<div className='tabs-grid'>
 							{tabs.map((tab) => (
-								<div key={tab.index}>
+								<div key={tab.index} style={{ flex: 1 }}>
 									<button
 										onClick={() => setActiveTab(tab.index)}
 										className={activeTab === tab.index ? 'tab active' : 'tab'}

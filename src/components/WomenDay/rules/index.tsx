@@ -57,11 +57,13 @@ const Rules = () => {
 						II/ SALE TƯNG BỪNG, MỪNG PHÁI ĐẸP – NGÀNH HÀNG APPLE GIẢM ĐẾN 50%
 					</h2>
 					<ul className='rules-list'>
+						<li>Phụ kiện tặng nàng chỉ từ 🔟K</li>
 						<li>Giảm đến 50% cho các sản phẩm Apple iPhone</li>
 						<li>Giảm đến 30% cho các thiết bị Likenew</li>
 						<li>Giảm đến 1,5 Triệu cho các thiết bị Android</li>
 						<li>Giảm đến 2 Triệu cho Macbook và Laptop</li>
-						<li>Phụ kiện tặng nàng chỉ từ 10K</li>
+						<li>Giảm đến 1 Triệu cho các sản phẩm Đồ chơi công nghệ</li>
+						<li>Phụ kiện giảm sốc chỉ từ 190K</li>
 						<ul>
 							<li>
 								Phụ kiện Apple giảm đến <span className='rules-section-title-hot'>60%:</span>
@@ -78,22 +80,22 @@ const Rules = () => {
 									</li>
 									<ul className='rules-sublist'>
 										<li className='li-cus'>
-											Combo Tết Apple 1: Ốp lưng và Cường lực chính hãng giá chỉ{' '}
+											Combo Tặng Nàng 1: Ốp lưng và Cường lực chính hãng giá chỉ{' '}
 											<span className='rules-section-title-hot'>960.000đ</span> (Giá gốc
 											1.140.000đ)
 										</li>
 										<li className='li-cus'>
-											Combo Tết Apple 2: Cường lực và Cốc sạc chính hãng giá chỉ{' '}
+											Combo Tặng Nàng 2: Cường lực và Cốc sạc chính hãng giá chỉ{' '}
 											<span className='rules-section-title-hot'>1.060.000đ</span> (Giá gốc
 											1.410.000đ)
 										</li>
 										<li className='li-cus'>
-											Combo Tết Apple 3: Ốp lưng, Cường lực và Camera lens chính hãng giá chỉ{' '}
+											Combo Tặng Nàng 3: Ốp lưng, Cường lực và Camera lens chính hãng giá chỉ{' '}
 											<span className='rules-section-title-hot'>1.360.000đ</span> (Giá gốc
 											1.650.000đ)
 										</li>
 										<li className='li-cus'>
-											Combo Tết Apple 4: Ốp lưng, Cường, Camera lens và Cốc sạc chính hãng giá chỉ{' '}
+											Combo Tặng Nàng 4: Ốp lưng, Cường, Camera lens và Cốc sạc chính hãng giá chỉ{' '}
 											<span className='rules-section-title-hot'>1.260.000đ</span> (Giá gốc
 											2.470.000đ)
 										</li>

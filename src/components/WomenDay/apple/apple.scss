@@ -51,6 +51,15 @@
 
 			.tab {
 				margin: 0 !important;
+				background-color: #fff;
+				color: #333;
+
+				&:hover {
+					background-color: #ff4d4f !important;
+					color: #fff !important;
+					border-color: #ff4d4f !important;
+					box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				}
 			}
 		}
 		.upgrade {

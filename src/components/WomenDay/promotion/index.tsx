@@ -29,7 +29,7 @@ const Promotion = ({ onScrollToRules }: PromotionProps) => {
 					<div onClick={onScrollToRules}>
 						<Image src={Privilege01} alt='privilege-01' width={270} height={117} />
 					</div>
-					<Link href='https://bachlongmobile.com/renew/'>
+					<Link href='https://bachlongmobile.com/thu-cu-doi-moi/'>
 						<Image src={Privilege02} alt='privilege-02' width={270} height={117} />
 					</Link>
 					<Link href='https://bachlongmobile.com/promotion/tet-apple-bao-hanh-toan-dien/'>

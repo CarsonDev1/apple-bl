@@ -237,7 +237,7 @@ const Access310: React.FC = () => {
 	const visibleProducts = filteredData.slice(0, visibleCount);
 
 	const loadMore = () => {
-		setVisibleCount((prevCount) => prevCount + 5);
+		setVisibleCount((prevCount) => prevCount + 10);
 	};
 
 	return (

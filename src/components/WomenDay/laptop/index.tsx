@@ -169,7 +169,7 @@ const LaptopList: React.FC = () => {
 	const visibleProducts = filteredData.slice(0, visibleCount);
 
 	const loadMore = () => {
-		setVisibleCount((prevCount) => prevCount + 5);
+		setVisibleCount((prevCount) => prevCount + 10);
 	};
 
 	return (
@@ -226,7 +226,10 @@ const LaptopList: React.FC = () => {
 											className='decor-product'
 										/>
 										<span></span>
-										<span className='percent'>Trả góp 0%</span>
+										{/* Only show "Trả góp 0%" if the product price is greater than 3,000,000 */}
+										{product.price_range.minimum_price.final_price.value > 3000000 && (
+											<span className='percent'>Trả góp 0%</span>
+										)}
 									</div>
 									<div className='upgrade-item-img'>
 										<div className='img-content'>

@@ -42,9 +42,13 @@
 			background: #fff;
 			box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 			border: 0.1rem solid #eee;
+			text-align: center;
 			@media screen and (max-width: 1400px) {
 				display: flex;
 				width: 100vw;
+				font-size: 1.4rem;
+				line-height: 1.4;
+				justify-items: center;
 			}
 		}
 	}
@@ -93,6 +97,39 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
+	}
+
+	.swiper-slide {
+		&.active {
+			position: relative;
+			padding: 0.5rem;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-image: url('../../../public/women-day/frame-category.png');
+				background-size: cover;
+				background-repeat: no-repeat;
+				z-index: 1;
+			}
+
+			.category-name {
+				color: #000;
+				font-size: 1.4rem;
+				font-weight: 700;
+				position: relative;
+				z-index: 2;
+			}
+		}
+
+		&.default {
+			background-color: white;
+			padding: 0.5rem;
+		}
 	}
 
 	// .rose {

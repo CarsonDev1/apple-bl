@@ -148,7 +148,7 @@ const WomenDay = () => {
 						spaceBetween={10}
 						breakpoints={{
 							300: {
-								slidesPerView: 4,
+								slidesPerView: 2.5,
 							},
 							1400: {
 								slidesPerView: 5,
@@ -157,12 +157,11 @@ const WomenDay = () => {
 						slidesPerView='auto'
 					>
 						{categories.map((category, index) => (
-							<SwiperSlide key={index}>
+							<SwiperSlide key={index} onClick={() => handleClick(category.id)}>
 								<div
 									className={`swiper-slide ${activeCategory === category.id ? 'active' : 'default'}`}
-									onClick={() => handleClick(category.id)}
 								>
-									{category.name}
+									<span className='category-name'>{category.name}</span>
 								</div>
 							</SwiperSlide>
 						))}

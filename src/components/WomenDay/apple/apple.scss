@@ -48,6 +48,10 @@
 			display: flex;
 			flex-wrap: wrap;
 			width: 100%;
+
+			.tab {
+				margin: 0 !important;
+			}
 		}
 		.upgrade {
 			display: grid;
